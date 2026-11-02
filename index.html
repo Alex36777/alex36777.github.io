@@ -186,8 +186,8 @@ document.getElementById("strata").innerHTML = layers.map(L => {
 function short(t){ const p = t.split(/[.:?]\s| – | - /)[0]; return p.length > 70 ? p.slice(0,68) + "…" : p; }
 
 // top
-const top = [...D].sort((a,b) => b.v - a.v).slice(0,3);
-document.getElementById("top").innerHTML = top.map(d =>
+const topList = [...D].sort((a,b) => b.v - a.v).slice(0,3);
+document.getElementById("top").innerHTML = topList.map(d =>
   `<a class="lead" href="${url(d.u)}" target="_blank" rel="noopener"><h3>${esc(d.t)}</h3><div class="meta"><span>${CATS[d.c]}</span><span>${d.v.toLocaleString("ru-RU")} просмотров</span></div></a>`).join("");
 
 // archive
