@@ -89,4 +89,13 @@
   <url><loc>https://nevsetakprosto.ru/st/dnk-vikingov-razrushila-staryy-mif/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nevsetakprosto.ru/st/napoleona-pobedila-ne-russkaya-zima-chto-na-samom-dele/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nevsetakprosto.ru/st/mir-uzhe-katilsya-k-voyne-no-pochti-nikto-ne-reshilsya-ego/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/arch/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/egypt/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/history/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/misc/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/museum/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/mystery/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/sea/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/space/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/r/under/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 </urlset>
