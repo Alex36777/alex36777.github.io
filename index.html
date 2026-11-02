@@ -179,6 +179,9 @@ footer{padding-block:22px 44px;color:var(--muted);font-size:13.5px;border-top:1p
 .g-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
 .g-score{font:500 13px/1 var(--f-mono);color:var(--lamp)}
 @media (max-width:760px){.game{grid-template-columns:1fr}.g-img{min-height:200px}}
+/* star cursor */
+@media (pointer:fine){html,body{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%3E%3Cpath%20d%3D%22M14%201C14.6%209%2019%2013.4%2027%2014C19%2014.6%2014.6%2019%2014%2027C13.4%2019%209%2014.6%201%2014C9%2013.4%2013.4%209%2014%201Z%22%20fill%3D%22%23F3CF7A%22%20stroke%3D%22%233A2A08%22%20stroke-width%3D%221.2%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%222.2%22%20fill%3D%22%23FFF8DC%22/%3E%3C/svg%3E") 14 14,auto}a,button,[role=button],.chip,.g-opt,label{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%235DB2FF%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M16%204C16.5%2011%2021%2015.5%2028%2016C21%2016.5%2016.5%2021%2016%2028C15.5%2021%2011%2016.5%204%2016C11%2015.5%2015.5%2011%2016%204Z%22%20fill%3D%22%23F3CF7A%22%20stroke%3D%22%233A2A08%22%20stroke-width%3D%221.1%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") 16 16,pointer}input[type=search]{cursor:text}}
+#trail{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
 </style>
 
 </head>
@@ -476,6 +479,31 @@ document.getElementById("f-count").textContent = D.length;
   });
   document.getElementById("g-next").addEventListener("click", next);
   next();
+})();
+// star trail behind the cursor
+(function(){
+  if (!matchMedia("(pointer:fine)").matches || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = document.createElement("canvas"); cv.id = "trail"; cv.setAttribute("aria-hidden","true"); document.body.appendChild(cv);
+  const ctx = cv.getContext("2d"); let W, H, dpr, P = [], run = false, lx = null, ly = null;
+  const size = () => { dpr = Math.min(2, devicePixelRatio||1); W = innerWidth; H = innerHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); };
+  size(); addEventListener("resize", size);
+  addEventListener("pointermove", e => {
+    const d = lx === null ? 0 : Math.hypot(e.clientX-lx, e.clientY-ly); lx = e.clientX; ly = e.clientY;
+    const n = Math.min(3, 1 + d/18|0);
+    for (let i = 0; i < n; i++) P.push({x:e.clientX+(Math.random()-.5)*6, y:e.clientY+(Math.random()-.5)*6, vx:(Math.random()-.5)*.6, vy:Math.random()*.6+.2, s:1.5+Math.random()*3, life:1, gold:Math.random()<.7});
+    if (P.length > 140) P.splice(0, P.length-140);
+    if (!run){ run = true; requestAnimationFrame(tick); }
+  });
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for (const p of P){
+      p.x += p.vx; p.y += p.vy; p.life -= .025;
+      const s = p.s*p.life; ctx.globalAlpha = Math.max(0,p.life); ctx.fillStyle = p.gold ? "#F3CF7A" : "#9FD2FF";
+      ctx.beginPath(); ctx.moveTo(p.x,p.y-s); ctx.quadraticCurveTo(p.x,p.y,p.x+s,p.y); ctx.quadraticCurveTo(p.x,p.y,p.x,p.y+s); ctx.quadraticCurveTo(p.x,p.y,p.x-s,p.y); ctx.quadraticCurveTo(p.x,p.y,p.x,p.y-s); ctx.fill();
+    }
+    P = P.filter(p => p.life > 0); ctx.globalAlpha = 1;
+    if (P.length) requestAnimationFrame(tick); else { run = false; ctx.clearRect(0,0,W,H); }
+  }
 })();
 </script>
 
