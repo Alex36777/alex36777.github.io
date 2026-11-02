@@ -215,6 +215,21 @@ footer{padding-block:22px 44px;color:var(--muted);font-size:13.5px;border-top:1p
 .map-zoom{position:absolute;right:12px;top:12px;display:grid;gap:6px;z-index:2}
 .map-zoom button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:rgba(6,10,21,.8);color:var(--ink);font:500 20px/1 var(--f-body)}
 .map-zoom button:hover{border-color:var(--lamp)}
+/* map zoom */
+.map path,.map circle{vector-effect:non-scaling-stroke}
+#map-svg{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+#map-svg.zoomed{touch-action:none}
+#map-svg.dragging{cursor:grabbing}
+.map-ui{position:absolute;left:12px;right:12px;top:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none;z-index:2}
+.map-reg{display:flex;flex-wrap:wrap;gap:6px;pointer-events:auto;min-width:0}
+.map-reg button,.map-zoom button{font:500 13px/1 var(--f-body);color:var(--ink);background:rgba(6,10,21,.8);border:1px solid var(--line);border-radius:999px;padding:8px 12px;backdrop-filter:blur(4px);white-space:nowrap}
+.map-reg button:hover,.map-zoom button:hover{border-color:var(--lamp)}
+.map-reg button[aria-pressed="true"]{background:var(--lamp);color:#1A1208;border-color:var(--lamp)}
+.map-zoom{display:flex;flex-direction:column;gap:6px;pointer-events:auto}
+.map-zoom button{width:38px;height:38px;padding:0;font-size:20px;border-radius:10px}
+.map-hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);margin:0;padding:8px 14px;border-radius:999px;background:rgba(6,10,21,.88);border:1px solid var(--line);font-size:13px;color:var(--ink);pointer-events:none;z-index:2;white-space:nowrap}
+@media (max-width:640px){.map-ui{position:static;padding:10px 10px 0;flex-direction:column}.map-reg{flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding-bottom:4px}.map-zoom{position:absolute;right:10px;bottom:10px;flex-direction:row}}
+
 /* star cursor */
 @media (pointer:fine){html,body{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%3E%3Cpath%20d%3D%22M14%201C14.6%209%2019%2013.4%2027%2014C19%2014.6%2014.6%2019%2014%2027C13.4%2019%209%2014.6%201%2014C9%2013.4%2013.4%209%2014%201Z%22%20fill%3D%22%23F3CF7A%22%20stroke%3D%22%233A2A08%22%20stroke-width%3D%221.2%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%222.2%22%20fill%3D%22%23FFF8DC%22/%3E%3C/svg%3E") 14 14,auto}a,button,[role=button],.chip,.g-opt,label{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%235DB2FF%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M16%204C16.5%2011%2021%2015.5%2028%2016C21%2016.5%2016.5%2021%2016%2028C15.5%2021%2011%2016.5%204%2016C11%2015.5%2015.5%2011%2016%204Z%22%20fill%3D%22%23F3CF7A%22%20stroke%3D%22%233A2A08%22%20stroke-width%3D%221.1%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") 16 16,pointer}input[type=search]{cursor:text}}
 #trail{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
@@ -262,7 +277,7 @@ footer{padding-block:22px 44px;color:var(--muted);font-size:13.5px;border-top:1p
     <p>Где это нашли. Нажмите на золотую точку, чтобы увидеть находку.</p>
   </div>
   <div class="chips map-regions" id="map-regions" role="group" aria-label="Регионы"></div>
-  <div class="map" id="map"><svg id="map-svg" role="group" aria-label="Карта мира с местами находок"></svg><div class="map-zoom"><button type="button" id="mz-in" aria-label="Приблизить">+</button><button type="button" id="mz-out" aria-label="Отдалить">−</button></div><div class="map-pop" id="map-pop" hidden></div><p class="map-note" id="map-note"></p></div>
+  <div class="map" id="map"><div class="map-ui"><div class="map-reg" role="group" aria-label="Регион"><button type="button" data-r="world" aria-pressed="true">Весь мир</button><button type="button" data-r="eu" aria-pressed="false">Европа</button><button type="button" data-r="med" aria-pressed="false">Средиземноморье</button><button type="button" data-r="egypt" aria-pressed="false">Египет и Ближний Восток</button><button type="button" data-r="am" aria-pressed="false">Америка</button><button type="button" data-r="ru" aria-pressed="false">Россия</button></div><div class="map-zoom"><button type="button" data-z="in" aria-label="Приблизить">+</button><button type="button" data-z="out" aria-label="Отдалить">−</button></div></div><p class="map-hint" id="map-hint" hidden>Чтобы приблизить, крутите колесо с зажатым Ctrl</p><svg id="map-svg" role="group" aria-label="Карта мира с местами находок"></svg><div class="map-zoom"><button type="button" id="mz-in" aria-label="Приблизить">+</button><button type="button" id="mz-out" aria-label="Отдалить">−</button></div><div class="map-pop" id="map-pop" hidden></div><p class="map-note" id="map-note"></p></div>
 </section>
 
 <section class="wrap" aria-labelledby="h-strata">
@@ -533,95 +548,90 @@ document.getElementById("f-count").textContent = D.length;
 // map of finds
 (function(){
   const svgEl = document.getElementById("map-svg"); if (!svgEl || !window.d3 || !d3.geoNaturalEarth1 || !window.topojson) return;
-  const W = 960, H = 470, MINW = W/16, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const W = 960, H = 470, reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const proj = d3.geoNaturalEarth1().scale(172).translate([W/2, H/2 + 24]), path = d3.geoPath(proj);
   const NS = "http://www.w3.org/2000/svg", mk = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); return e; };
   svgEl.appendChild(mk("path", {class:"grat", d:path(d3.geoGraticule10())}));
   const pts = mk("g", {}); svgEl.appendChild(pts);
   fetch("lib/land-110m.json").then(r => r.json()).then(w => svgEl.insertBefore(mk("path", {class:"land", d:path(topojson.feature(w, w.objects.land))}), pts)).catch(() => {});
-  const box = document.getElementById("map"), pop = document.getElementById("map-pop");
-  const items = D.filter(d => GEO[d.u]), seen = {}, P = [];
-  let vb = {x:0, y:0, w:W, h:H}, cur = null, dragged = false;
+  const items = D.filter(d => GEO[d.u]), seen = {}, nodes = [];
   items.forEach(d => {
     let [x, y] = proj([GEO[d.u][1], GEO[d.u][0]]);
-    const key = Math.round(x/8) + "," + Math.round(y/8), n = seen[key] = (seen[key]||0) + 1;
-    if (n > 1) { const a = n * 2.1; x += Math.cos(a) * 5 * Math.ceil(n/6); y += Math.sin(a) * 5 * Math.ceil(n/6); }
-    const g = mk("g", {class:"pt", transform:`translate(${x.toFixed(2)},${y.toFixed(2)})`, tabindex:"0", role:"button", "aria-label":d.t});
-    const halo = mk("circle", {class:"halo", r:"7"}), core = mk("circle", {class:"core", r:"4.5"});
-    g.appendChild(halo); g.appendChild(core); pts.appendChild(g); P.push({halo, core});
-    g.addEventListener("click", e => { e.stopPropagation(); if (dragged) return; open(d, x, y, g); });
+    const key = Math.round(x/4) + "," + Math.round(y/4), n = seen[key] = (seen[key]||0) + 1;
+    if (n > 1) { const a = n * 2.1, r = 2.2 * Math.ceil(n/6); x += Math.cos(a) * r; y += Math.sin(a) * r; }
+    const g = mk("g", {class:"pt", tabindex:"0", role:"button", "aria-label":d.t});
+    const halo = mk("circle", {class:"halo", cx:x, cy:y, r:7}), core = mk("circle", {class:"core", cx:x, cy:y, r:4.5});
+    g.appendChild(halo); g.appendChild(core);
+    g.addEventListener("click", e => { e.stopPropagation(); if (moved) return; open(d, x, y, g); });
     g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(d, x, y, g); } });
+    pts.appendChild(g); nodes.push([halo, core]);
   });
   const nf = n => n + " " + ((n%100>10&&n%100<20)?"находок":n%10===1?"находка":(n%10>1&&n%10<5)?"находки":"находок");
-  document.getElementById("map-note").textContent = nf(items.length) + " · приближение: двойной щелчок, Ctrl + колесо или два пальца";
+  document.getElementById("map-note").textContent = nf(items.length) + " на карте";
 
-  const clamp = v => { v.w = Math.min(W, Math.max(MINW, v.w)); v.h = v.w * H / W; v.x = Math.min(Math.max(0, v.x), W - v.w); v.y = Math.min(Math.max(0, v.y), H - v.h); return v; };
+  // view box zoom & pan
+  let V = {x:0, y:0, w:W, h:H}, anim = 0;
+  const MINW = W/10;
+  function clamp(v){ const w = Math.min(W, Math.max(MINW, v.w)), h = w*H/W; return {w, h, x: Math.min(W-w, Math.max(0, v.x)), y: Math.min(H-h, Math.max(0, v.y))}; }
   function apply(){
-    svgEl.setAttribute("viewBox", `${vb.x.toFixed(2)} ${vb.y.toFixed(2)} ${vb.w.toFixed(2)} ${vb.h.toFixed(2)}`);
-    const k = Math.pow(vb.w / W, .85);
-    for (const p of P){ p.halo.setAttribute("r", (7*k).toFixed(3)); p.core.setAttribute("r", (4.5*k).toFixed(3)); }
-    box.classList.toggle("zoomed", vb.w < W - 1);
-    if (cur) place();
+    svgEl.setAttribute("viewBox", `${V.x.toFixed(2)} ${V.y.toFixed(2)} ${V.w.toFixed(2)} ${V.h.toFixed(2)}`);
+    const k = Math.pow(V.w/W, .85); nodes.forEach(([h, c]) => { h.setAttribute("r", (7*k).toFixed(2)); c.setAttribute("r", (4.5*k).toFixed(2)); });
+    svgEl.classList.toggle("zoomed", V.w < W - 1);
   }
-  function animateTo(t){
-    t = clamp({...t}); const s = {...vb}, t0 = performance.now(), dur = reduce ? 1 : 650;
-    (function step(now){ let q = Math.min(1, (now - t0) / dur); q = 1 - Math.pow(1 - q, 3);
-      vb = {x:s.x+(t.x-s.x)*q, y:s.y+(t.y-s.y)*q, w:s.w+(t.w-s.w)*q, h:s.h+(t.h-s.h)*q}; apply(); if (q < 1) requestAnimationFrame(step); })(t0);
+  function go(T, smooth){
+    T = clamp(T); cancelAnimationFrame(anim); closePop();
+    if (!smooth || reduce){ V = T; apply(); return; }
+    const S = {...V}, t0 = performance.now(), dur = 650;
+    (function step(now){ const p = Math.min(1, (now - t0)/dur), e = p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3)/2;
+      V = {x:S.x+(T.x-S.x)*e, y:S.y+(T.y-S.y)*e, w:S.w+(T.w-S.w)*e, h:S.h+(T.h-S.h)*e}; apply(); if (p < 1) anim = requestAnimationFrame(step); })(t0);
   }
-  const zoomAt = (f, cx, cy, anim) => { const nw = Math.min(W, Math.max(MINW, vb.w * f)), r = nw / vb.w; const t = clamp({x:cx-(cx-vb.x)*r, y:cy-(cy-vb.y)*r, w:nw, h:nw*H/W}); if (anim) animateTo(t); else { vb = t; apply(); } };
-  const toSvg = (X, Y) => { const r = svgEl.getBoundingClientRect(); return [vb.x + (X - r.left) / r.width * vb.w, vb.y + (Y - r.top) / r.height * vb.h]; };
-
-  // regions
-  const REG = [["Весь мир", null], ["Европа", [-12,35,42,62]], ["Средиземноморье", [6,29,38,45]], ["Египет и Ближний Восток", [24,22,48,38]], ["Америка", [-125,-15,-55,58]], ["Россия и Азия", [28,30,150,72]]];
-  const inBox = (b, d) => { const [la, lo] = GEO[d.u]; return lo >= b[0] && lo <= b[2] && la >= b[1] && la <= b[3]; };
-  const fit = b => { const xs = [], ys = []; for (const lo of [b[0], (b[0]+b[2])/2, b[2]]) for (const la of [b[1], (b[1]+b[3])/2, b[3]]) { const [x, y] = proj([lo, la]); xs.push(x); ys.push(y); }
-    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys), w = Math.max(x1 - x0, (y1 - y0) * W / H) * 1.08;
-    return {x:(x0+x1)/2 - w/2, y:(y0+y1)/2 - w*H/W/2, w, h:w*H/W}; };
-  const regEl = document.getElementById("map-regions");
-  regEl.innerHTML = REG.map(([n, b], i) => `<button class="chip" type="button" data-r="${i}" aria-pressed="${i===0}" style="--c:var(--lamp)"><span class="dot"></span>${n}<sup>${b ? items.filter(d => inBox(b, d)).length : items.length}</sup></button>`).join("");
-  const press = i => regEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", +c.dataset.r === i));
-  regEl.addEventListener("click", e => { const c = e.target.closest(".chip"); if (!c) return; const b = REG[+c.dataset.r][1]; close(); press(+c.dataset.r); animateTo(b ? fit(b) : {x:0, y:0, w:W, h:H}); });
-  document.getElementById("mz-in").addEventListener("click", () => { press(-1); zoomAt(.55, vb.x + vb.w/2, vb.y + vb.h/2, true); });
-  document.getElementById("mz-out").addEventListener("click", () => { press(-1); zoomAt(1.8, vb.x + vb.w/2, vb.y + vb.h/2, true); });
-  svgEl.addEventListener("dblclick", e => { e.preventDefault(); press(-1); const [cx, cy] = toSvg(e.clientX, e.clientY); zoomAt(.45, cx, cy, true); });
-  svgEl.addEventListener("wheel", e => { if (!e.ctrlKey) return; e.preventDefault(); press(-1); const [cx, cy] = toSvg(e.clientX, e.clientY); zoomAt(Math.exp(e.deltaY * .002), cx, cy); }, {passive:false});
-
-  // drag to pan, two fingers to zoom
-  const ptrs = new Map(); let last = null, moved = 0;
-  svgEl.addEventListener("pointerdown", e => { if (e.pointerType === "mouse" && e.button !== 0) return; ptrs.set(e.pointerId, {x:e.clientX, y:e.clientY}); moved = 0; dragged = false; last = null; });
-  addEventListener("pointermove", e => {
-    if (!ptrs.has(e.pointerId)) return; const prev = ptrs.get(e.pointerId); ptrs.set(e.pointerId, {x:e.clientX, y:e.clientY});
-    const r = svgEl.getBoundingClientRect();
-    if (ptrs.size === 1 && vb.w < W - 1) {
-      const dx = e.clientX - prev.x, dy = e.clientY - prev.y; moved += Math.abs(dx) + Math.abs(dy);
-      if (moved > 4) { dragged = true; box.classList.add("dragging"); press(-1); vb = clamp({...vb, x:vb.x - dx / r.width * vb.w, y:vb.y - dy / r.height * vb.h}); apply(); }
-    } else if (ptrs.size === 2) {
-      const [a, b] = [...ptrs.values()], dist = Math.hypot(a.x - b.x, a.y - b.y), mx = (a.x + b.x)/2, my = (a.y + b.y)/2;
-      if (last) { const [cx, cy] = toSvg(mx, my); zoomAt(last / dist, cx, cy); press(-1); dragged = true; }
-      last = dist;
-    }
+  function zoomAt(f, cx, cy, smooth){ const w = Math.min(W, Math.max(MINW, V.w*f)), r = w/V.w; go({x: cx-(cx-V.x)*r, y: cy-(cy-V.y)*r, w, h: w*H/W}, smooth); setReg(null); }
+  const REG = {world:null, eu:[-11,36,32,63], med:[-6,30,37,46], egypt:[24,21,52,39], am:[-128,-16,-55,62], ru:[27,41,142,72]};
+  function fit(b){ if (!b) return {x:0,y:0,w:W,h:H};
+    const [x1,y1] = proj([b[0],b[3]]), [x2,y2] = proj([b[2],b[1]]); let bw = (x2-x1)*1.08, bh = (y2-y1)*1.08;
+    if (bw/bh > W/H) bh = bw*H/W; else bw = bh*W/H; return {x:(x1+x2)/2-bw/2, y:(y1+y2)/2-bh/2, w:bw, h:bh}; }
+  const regBox = document.querySelector(".map-reg");
+  function setReg(k){ regBox.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.r === k)); }
+  regBox.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; setReg(b.dataset.r); go(fit(REG[b.dataset.r]), true); });
+  document.querySelector(".map-zoom").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; zoomAt(b.dataset.z === "in" ? .6 : 1/.6, V.x+V.w/2, V.y+V.h/2, true); });
+  const toSvg = (cx, cy) => { const r = svgEl.getBoundingClientRect(); return [V.x + (cx - r.left)/r.width*V.w, V.y + (cy - r.top)/r.height*V.h]; };
+  const hint = document.getElementById("map-hint"); let hintT;
+  svgEl.addEventListener("wheel", e => {
+    if (e.ctrlKey || e.metaKey){ e.preventDefault(); const [x, y] = toSvg(e.clientX, e.clientY); zoomAt(Math.exp(e.deltaY*.0022), x, y, false); }
+    else { hint.hidden = false; clearTimeout(hintT); hintT = setTimeout(() => hint.hidden = true, 1400); }
+  }, {passive:false});
+  const P = new Map(); let moved = false, startD = 0, startW = 0;
+  svgEl.addEventListener("pointerdown", e => { P.set(e.pointerId, [e.clientX, e.clientY]); moved = false;
+    if (P.size === 2){ const [a, b] = [...P.values()]; startD = Math.hypot(a[0]-b[0], a[1]-b[1]); startW = V.w; } });
+  svgEl.addEventListener("pointermove", e => {
+    if (!P.has(e.pointerId)) return; const prev = P.get(e.pointerId); P.set(e.pointerId, [e.clientX, e.clientY]);
+    if (P.size === 2 && startD){ const [a, b] = [...P.values()], dd = Math.hypot(a[0]-b[0], a[1]-b[1]); const [mx, my] = toSvg((a[0]+b[0])/2, (a[1]+b[1])/2);
+      const w = Math.min(W, Math.max(MINW, startW*startD/dd)), r = w/V.w; V = clamp({x: mx-(mx-V.x)*r, y: my-(my-V.y)*r, w, h: w*H/W}); apply(); moved = true; setReg(null); return; }
+    if (V.w >= W - 1 && e.pointerType === "touch") return;
+    const dx = e.clientX - prev[0], dy = e.clientY - prev[1]; if (!moved && Math.hypot(dx, dy) < 2) return;
+    if (!moved){ moved = true; svgEl.setPointerCapture(e.pointerId); svgEl.classList.add("dragging"); closePop(); }
+    const r = svgEl.getBoundingClientRect(); V = clamp({x: V.x - dx/r.width*V.w, y: V.y - dy/r.height*V.h, w: V.w, h: V.h}); apply(); setReg(null);
   });
-  const up = e => { ptrs.delete(e.pointerId); if (ptrs.size < 2) last = null; if (!ptrs.size) { box.classList.remove("dragging"); setTimeout(() => dragged = false, 0); } };
-  addEventListener("pointerup", up); addEventListener("pointercancel", up);
+  const up = e => { P.delete(e.pointerId); if (P.size < 2) startD = 0; svgEl.classList.remove("dragging"); setTimeout(() => moved = false, 0); };
+  svgEl.addEventListener("pointerup", up); svgEl.addEventListener("pointercancel", up);
+  apply();
 
   // popup
-  function place(){
-    const r = box.getBoundingClientRect(), px = (cur.x - vb.x) / vb.w * r.width, py = (cur.y - vb.y) / vb.h * r.height;
-    if (px < -10 || py < -10 || px > r.width + 10 || py > r.height + 10) { close(); return; }
-    const pw = pop.offsetWidth, ph = pop.offsetHeight;
-    let left = px + 16; if (left + pw > r.width - 12) left = px - pw - 16; left = Math.max(12, left);
-    pop.style.left = left + "px"; pop.style.top = Math.min(Math.max(12, py - ph/2), r.height - ph - 12) + "px";
-  }
+  const box = document.getElementById("map"), pop = document.getElementById("map-pop"); let cur = null;
   function open(d, x, y, g){
-    if (cur) cur.g.classList.remove("on"); cur = {x, y, g}; g.classList.add("on");
+    if (cur) cur.classList.remove("on"); cur = g; g.classList.add("on");
     pop.innerHTML = `<button class="x" type="button" aria-label="Закрыть">×</button><img src="${img(d.u)}" alt=""><div class="b"><span class="k">${CATS[d.c]}${d.a && d.a < 1e6 ? " · " + fmtAge(d.a) : ""}</span><h3>${esc(d.t)}</h3><a class="go2" href="${url(d.u)}" target="_blank" rel="noopener">Читать на Дзене →</a></div>`;
-    pop.hidden = false; place();
-    pop.querySelector(".x").addEventListener("click", e => { e.stopPropagation(); close(true); });
+    pop.hidden = false;
+    const br = box.getBoundingClientRect(), sr = svgEl.getBoundingClientRect();
+    const px = sr.left - br.left + (x - V.x)/V.w*sr.width, py = sr.top - br.top + (y - V.y)/V.h*sr.height, pw = pop.offsetWidth, ph = pop.offsetHeight;
+    let left = px + 16; if (left + pw > br.width - 12) left = px - pw - 16; left = Math.max(12, left);
+    const top = Math.min(Math.max(12, py - ph/2), br.height - ph - 12);
+    pop.style.left = left + "px"; pop.style.top = top + "px";
+    pop.querySelector(".x").addEventListener("click", closePop);
   }
-  function close(refocus){ pop.hidden = true; if (cur) { cur.g.classList.remove("on"); if (refocus === true) cur.g.focus(); cur = null; } }
-  box.addEventListener("click", e => { if (!dragged && !pop.hidden && !pop.contains(e.target) && !e.target.closest(".map-zoom")) close(); });
-  addEventListener("keydown", e => { if (e.key === "Escape" && !pop.hidden) close(true); });
-  apply();
+  function closePop(){ if (pop.hidden) return; pop.hidden = true; if (cur) { cur.classList.remove("on"); cur = null; } }
+  box.addEventListener("click", e => { if (!pop.hidden && !pop.contains(e.target) && !e.target.closest(".pt")) closePop(); });
+  addEventListener("keydown", e => { if (e.key === "Escape") closePop(); });
 })();
 
 // star trail behind the cursor
