@@ -223,7 +223,7 @@ function short(t){ const p = t.split(/[.:?]\s| – | - /)[0]; return p.length > 
 // top finds
 const topList = [...D].sort((a,b) => b.v - a.v).slice(0,3);
 document.getElementById("top").innerHTML = topList.map((d,i) =>
-  `<a class="lead" style="--c:${col(d.c)}" href="${url(d.u)}" target="_blank" rel="noopener"><img class="bg" src="images/${d.u}.jpg" alt="" loading="lazy"><span class="rank">№ ${i+1} · ${CATS[d.c]}</span><h3>${esc(d.t)}</h3><div class="meta"><span>${views(d.v)}</span><span>Читать →</span></div></a>`).join("");
+  `<a class="lead" style="--c:${col(d.c)}" href="${url(d.u)}" target="_blank" rel="noopener"><img class="bg" src="images/${d.u}.jpg?v=2" alt=""><span class="rank">№ ${i+1} · ${CATS[d.c]}</span><h3>${esc(d.t)}</h3><div class="meta"><span>${views(d.v)}</span><span>Читать →</span></div></a>`).join("");
 
 // strata
 const layers = [
@@ -254,7 +254,7 @@ document.getElementById("more").addEventListener("click", () => { limit += 24; r
 function render(){
   const list = D.filter(d => (cat==="all" || d.c===cat) && (!q || d.t.toLowerCase().includes(q))).sort((a,b) => a.o - b.o);
   document.getElementById("grid").innerHTML = list.slice(0,limit).map(d =>
-    `<a class="card" style="--c:${col(d.c)}" href="${url(d.u)}" target="_blank" rel="noopener"><div class="band"><img src="images/${d.u}.jpg" alt="" loading="lazy">${svg(d.c)}</div><div class="row"><span class="tag">${CATS[d.c]}</span>${d.a && d.a<1e6 ? `<span class="age">${fmtAge(d.a)}</span>`:""}</div><h3>${esc(d.t)}</h3><span class="go">Читать на Дзене →</span></a>`).join("");
+    `<a class="card" style="--c:${col(d.c)}" href="${url(d.u)}" target="_blank" rel="noopener"><div class="band"><img src="images/${d.u}.jpg?v=2" alt="" loading="lazy">${svg(d.c)}</div><div class="row"><span class="tag">${CATS[d.c]}</span>${d.a && d.a<1e6 ? `<span class="age">${fmtAge(d.a)}</span>`:""}</div><h3>${esc(d.t)}</h3><span class="go">Читать на Дзене →</span></a>`).join("");
   document.getElementById("empty").hidden = list.length > 0;
   document.getElementById("more-wrap").hidden = list.length <= limit;
   document.getElementById("shown").textContent = list.length === D.length ? "Сначала новые." : `Найдено: ${list.length} из ${D.length}.`;
