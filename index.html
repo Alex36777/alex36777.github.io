@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Не все так просто!</title>
+<meta name="description" content="Находки археологов, тайны истории и космоса. Витрина канала «Не все так просто!» на Дзене.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: masthead → stratigraphic column of finds by age → most-read → filterable archive */
+:root{
+  --bg:#EDEFF1; --surface:#FFFFFF; --ink:#16181C; --muted:#5B616B; --line:#D2D6DC;
+  --lapis:#2645A3; --lapis-soft:#E1E7F7; --ochre:#A9661F;
+  --s1:#E4DCCD; --s2:#D3C3A6; --s3:#B99D74; --s4:#8E7350; --s-ink:#2A2118;
+  --f-display:"Yeseva One","Georgia",serif;
+  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111317; --surface:#1A1D23; --ink:#E9EBEF; --muted:#9AA1AC; --line:#2C3038;
+  --lapis:#93ACF2; --lapis-soft:#1F2840; --ochre:#E0A25B;
+  --s1:#3A332A; --s2:#4A3E2F; --s3:#5C4A33; --s4:#6E5638; --s-ink:#F1E8DA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111317; --surface:#1A1D23; --ink:#E9EBEF; --muted:#9AA1AC; --line:#2C3038;
+  --lapis:#93ACF2; --lapis-soft:#1F2840; --ochre:#E0A25B;
+  --s1:#3A332A; --s2:#4A3E2F; --s3:#5C4A33; --s4:#6E5638; --s-ink:#F1E8DA; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--lapis);color:var(--bg);text-decoration:none;font-weight:600;font-size:15px;padding:11px 18px;border-radius:999px;white-space:nowrap}
+.btn:hover{filter:brightness(1.08)}
+.btn:focus-visible,.chip:focus-visible,.card:focus-visible,.find:focus-visible,input:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.label{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* masthead */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px;border-bottom:1px solid var(--line)}
+.brand{font:400 22px/1 var(--f-display);text-decoration:none}
+.brand b{color:var(--lapis);font-weight:400}
+.hero{padding-block:56px 40px;display:grid;gap:22px}
+.hero h1{font:400 clamp(34px,6.4vw,68px)/1.04 var(--f-display);max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--lapis)}
+.hero p{margin:0;max-width:56ch;color:var(--muted);font-size:18px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;padding-top:8px}
+.facts div{display:grid;gap:4px}
+.facts strong{font:500 26px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* strata */
+section{padding-block:36px}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px;margin-bottom:18px}
+.sec-head h2{font:400 clamp(26px,3.6vw,36px)/1.1 var(--f-display)}
+.sec-head p{margin:0;color:var(--muted);max-width:52ch}
+.column{border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.layer{display:grid;grid-template-columns:150px 1fr;color:var(--s-ink)}
+.layer:nth-child(1){background:var(--s1)} .layer:nth-child(2){background:var(--s2)}
+.layer:nth-child(3){background:var(--s3)} .layer:nth-child(4){background:var(--s4)}
+.layer:nth-child(3),.layer:nth-child(4){--chip-bg:rgba(255,255,255,.16)}
+.depth{padding:16px;border-right:1px dashed color-mix(in srgb,var(--s-ink) 30%,transparent);display:grid;align-content:start;gap:6px}
+.depth b{font:500 15px/1.2 var(--f-mono)}
+.depth span{font-size:13px;opacity:.8}
+.finds{padding:14px;display:flex;flex-wrap:wrap;gap:8px;min-width:0}
+.find{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;font-size:14px;line-height:1.3;padding:7px 11px;border-radius:4px;background:var(--chip-bg,rgba(255,255,255,.5));max-width:100%}
+.find:hover{background:var(--surface);color:var(--ink)}
+.find i{font:500 12px/1 var(--f-mono);font-style:normal;opacity:.75;white-space:nowrap}
+@media (max-width:640px){.layer{grid-template-columns:1fr}.depth{border-right:0;border-bottom:1px dashed color-mix(in srgb,var(--s-ink) 30%,transparent);grid-auto-flow:column;justify-content:start;align-items:baseline;gap:10px;padding-bottom:10px}}
+
+/* top */
+.top3{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px}
+.lead{display:grid;align-content:space-between;gap:24px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px;min-width:0}
+.lead:first-child{background:var(--lapis);color:var(--bg);border-color:var(--lapis)}
+.lead h3{font:400 clamp(20px,2.3vw,26px)/1.2 var(--f-display)}
+.lead:first-child h3{font-size:clamp(24px,3vw,34px)}
+.lead .meta{display:flex;justify-content:space-between;gap:10px;font:500 13px/1 var(--f-mono)}
+.lead:hover{border-color:var(--lapis)}
+@media (max-width:820px){.top3{grid-template-columns:1fr}}
+
+/* archive */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 14px/1 var(--f-body);color:var(--ink);background:transparent;border:1px solid var(--line);padding:9px 13px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip sup{font:500 11px/1 var(--f-mono);opacity:.7;margin-left:3px}
+.search{flex:1 1 220px;min-width:0;font:400 15px var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:10px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{display:grid;grid-template-rows:auto 1fr auto;gap:12px;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px;min-width:0}
+.card:hover{border-color:var(--lapis)}
+.card h3{font:500 16.5px/1.38 var(--f-body)}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{font:500 11.5px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--lapis)}
+.age{font:500 12px/1 var(--f-mono);color:var(--ochre);font-variant-numeric:tabular-nums}
+.go{font-size:13.5px;color:var(--muted)}
+.card:hover .go{color:var(--lapis)}
+.empty{color:var(--muted);padding:24px 0}
+
+.cta{margin-block:40px 24px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:28px;display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.cta h2{font:400 clamp(24px,3vw,32px)/1.15 var(--f-display);max-width:22ch}
+.cta p{margin:6px 0 0;color:var(--muted)}
+footer{padding-block:20px 40px;color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){.find,.card,.lead,.btn{transition:background .15s,border-color .15s,color .15s,filter .15s}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="https://dzen.ru/id/6ac51b68ff198c5f7a5f1dab" target="_blank" rel="noopener">Не все <b>так просто!</b></a>
+  <a class="btn" href="https://dzen.ru/id/6ac51b68ff198c5f7a5f1dab" target="_blank" rel="noopener">Подписаться на Дзене</a>
+</header>
+
+<main>
+<div class="wrap hero">
+  <span class="label">Канал о находках и загадках</span>
+  <h1>Что прятали <em>под землёй</em>, на дне моря и за запечатанной дверью</h1>
+  <p>Истории о том, что находят археологи, о чём молчат учебники и что приходит к нам из космоса. Без сенсаций ради сенсаций: разбираемся, что известно на самом деле.</p>
+  <div class="facts">
+    <div><strong id="f-count">87</strong><span class="label">статей</span></div>
+    <div><strong>130 000</strong><span class="label">лет, самая глубокая находка</span></div>
+    <div><strong>1–4</strong><span class="label">новых статьи в день</span></div>
+  </div>
+</div>
+
+<section class="wrap" aria-labelledby="h-strata">
+  <div class="sec-head">
+    <h2 id="h-strata">Глубина времени</h2>
+    <p>Статьи разложены по слоям, как в археологическом разрезе: чем ниже, тем древнее находка.</p>
+  </div>
+  <div class="column" id="strata"></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-top">
+  <div class="sec-head">
+    <h2 id="h-top">Читают больше всего</h2>
+  </div>
+  <div class="top3" id="top"></div>
+</section>
+
+<section class="wrap" aria-labelledby="h-all">
+  <div class="sec-head">
+    <h2 id="h-all">Все статьи</h2>
+    <p id="shown"></p>
+  </div>
+  <div class="tools">
+    <div class="chips" id="chips" role="group" aria-label="Рубрики"></div>
+    <input class="search" id="q" type="search" placeholder="Поиск: Помпеи, викинги, тоннель…" aria-label="Поиск по статьям">
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>Ничего не нашлось. Попробуйте другое слово или рубрику «Все».</p>
+</section>
+
+<div class="wrap">
+  <div class="cta">
+    <div>
+      <h2>Новые находки выходят каждый день</h2>
+      <p>Подпишитесь на канал, чтобы видеть их в ленте Дзена.</p>
+    </div>
+    <a class="btn" href="https://dzen.ru/id/6ac51b68ff198c5f7a5f1dab" target="_blank" rel="noopener">Открыть канал</a>
+  </div>
+</div>
+</main>
+
+<footer class="wrap">«Не все так просто!» · Все статьи открываются на Яндекс Дзене.</footer>
+
+<script>
+const D = [{"t": "В древней могиле нашли женщину с чёрным глазом. Его украшали золотые нити", "v": 14, "u": "augtpYn_1Cc6VO1T", "c": "arch", "a": null, "o": 0}, {"t": "Под дворцом в Египте нашли 12 человеческих рук. Все оказались правыми – и это не случайность", "v": 8, "u": "aucYaCuAv38GWARx", "c": "egypt", "a": null, "o": 1}, {"t": "На отвесной скале стоят фигуры с человеческими лицами. Внутри каждой спрятан мертвец", "v": 25, "u": "aubl04n_1Cc6uTlg", "c": "arch", "a": null, "o": 2}, {"t": "Со дна моря подняли тёмный обломок. Внутри оказался механизм, который рассчитывал затмения", "v": 47, "u": "at5KBsuoJhnLzW0L", "c": "sea", "a": null, "o": 3}, {"t": "Корабль исчез, а груз остался. У берегов Турции нашли сосуды, которым может быть 4700 лет", "v": 11, "u": "auDzVvxZjwBICuuT", "c": "sea", "a": 4700.0, "o": 4}, {"t": "В Средневековье люди мылись чаще, чем принято думать. Но вот как именно", "v": 5, "u": "auQE-c4p_FDRRhrI", "c": "history", "a": null, "o": 5}, {"t": "Что скрывали в стенах старых домов? Ведьмины бутылки и вещи для защиты от зла", "v": 4, "u": "auRZVQx1wwPBsAf5", "c": "mystery", "a": null, "o": 6}, {"t": "Чем на самом деле пахли русские царевны до появления духов", "v": 9, "u": "auQBQJmPxycDtK7D", "c": "history", "a": null, "o": 7}, {"t": "Он лежал в пещере больше 130 тысяч лет. За это время его покрыл камень", "v": 461, "u": "auMHgyuAv38Gz2Wy", "c": "under", "a": 130000.0, "o": 8}, {"t": "В пустыне нашли могилу длиной почти 55 метров с каменными «антеннами»: внутри – один человек и четыре бусины из страусиных яиц", "v": 204, "u": "auDq0hIfBDqYlDtR", "c": "arch", "a": null, "o": 9}, {"t": "В Мексике нашли гигантскую «карту Вселенной». Разгадку спрятали в яме с цветной землёй", "v": 85, "u": "auI4ROfJRBWmd48R", "c": "arch", "a": null, "o": 10}, {"t": "На 2200-летних воинах нашли 79 отпечатков пальцев. Они указали на женщин и детей среди создателей терракотовой армии", "v": 7, "u": "auFfCbSAqUsEQ-BT", "c": "arch", "a": 2200.0, "o": 11}, {"t": "Серп на шее, замок на ноге: зачем в Европе запирали могилы «вампиров»", "v": 6, "u": "auFj4-DRN1wZIDlI", "c": "mystery", "a": null, "o": 12}, {"t": "На дне подводной пещеры в Мексике нашли девушку. Она жила почти 13 тысяч лет назад", "v": 3968, "u": "auASxZXnO2bSkWhr", "c": "under", "a": 13000.0, "o": 13}, {"t": "Под пирамидой в Мексике нашли тоннель. В его темноте люди создали собственное звёздное небо", "v": 197, "u": "at8iRKca6RJHMyLM", "c": "under", "a": null, "o": 14}, {"t": "В Мексике нашли «инопланетные» черепа. Настоящая история оказалась сложнее сенсации", "v": 73, "u": "at45wwjavwEF9vkq", "c": "mystery", "a": null, "o": 15}, {"t": "Шахтёры вскрыли пещеру с кристаллами величиной с дом. Почему внутри нельзя было задерживаться", "v": 111, "u": "at5AKywLBQkRCehU", "c": "under", "a": null, "o": 16}, {"t": "В египетской мумии нашли текст. Когда его прочитали, оказалось - это Гомер", "v": 422, "u": "at25vpcSa1R38BDP", "c": "egypt", "a": null, "o": 17}, {"t": "Его нашли в египетской гробнице и 64 года не замечали. Это платье оказалось старше пирамид", "v": 182, "u": "at20xWOyflHhKGVQ", "c": "egypt", "a": 5000, "o": 18}, {"t": "Он продал плохую медь и получил жалобу. Спустя 3800 лет её всё ещё читают", "v": 4, "u": "atzgBOF9tlMzIfQ6", "c": "arch", "a": 3800.0, "o": 19}, {"t": "Гробница оставалась запечатанной 600 лет. Красный череп стал одной из её загадок", "v": 108, "u": "atxbbek2jUotHPni", "c": "arch", "a": 600.0, "o": 20}, {"t": "Озеро хранило их почти 2000 лет: плавучие дворцы Калигулы подняли со дна – и потеряли снова", "v": 4, "u": "attm2jQE0jD_DDyU", "c": "sea", "a": 2000.0, "o": 21}, {"t": "Почти 4000 лет под землёй: возле Луксора нашли 11 погребений и украшения, пережившие своих владельцев", "v": 43, "u": "atry5JXnO2bSZgcP", "c": "egypt", "a": 4000.0, "o": 22}, {"t": "Под египетским храмом нашли тоннель длиной 1300 метров. Почему его связывают с тайной Клеопатры", "v": 443, "u": "atpEmjQE0jD_WvZJ", "c": "egypt", "a": null, "o": 23}, {"t": "2600 лет за каменной дверью: археологи открыли гробницу, до которой не добрались грабители", "v": 397, "u": "atn65pFVSyRnD35E", "c": "arch", "a": 2600.0, "o": 24}, {"t": "Леонардо оставил подсказку: под замком в Милане обнаружили скрытые подземные ходы", "v": 56, "u": "atnNc6ca6RJHfRrN", "c": "under", "a": null, "o": 25}, {"t": "Под лодками скрывается римский город: здесь рыбы плавают над полами роскошных вилл", "v": 6, "u": "atnJiA4ez2MvATo3", "c": "under", "a": null, "o": 26}, {"t": "2000 лет под пеплом: в Помпеях нашли дом с собственным спа для десятков гостей", "v": 86, "u": "atikiOYB8ynWAks2", "c": "arch", "a": 2000.0, "o": 27}, {"t": "Вечер воскресенья, а вы уже устали. Почему выходные иногда выматывают сильнее работы", "v": 3, "u": "ath1S7wGIXQNrUyI", "c": "misc", "a": null, "o": 28}, {"t": "Под римской церковью нашли другую церковь. А ещё глубже – улицу и храм древнего бога", "v": 46, "u": "atdNsWDX1lL67VCc", "c": "under", "a": null, "o": 29}, {"t": "Письму почти 2000 лет. В нём не тайна империи, а приглашение на день рождения", "v": 5, "u": "atZnyH-lyTIvuAG3", "c": "arch", "a": 2000.0, "o": 30}, {"t": "Квартиру не открывали десятилетиями. На стене ждал портрет за 2,1 миллиона евро", "v": 2, "u": "atZrF_1TDxoDCAvH", "c": "museum", "a": null, "o": 31}, {"t": "Туристы нашли тело в Альпах. Через 10 лет внутри обнаружили наконечник стрелы", "v": 1063, "u": "atXf3X5t1Ed_a0aK", "c": "arch", "a": null, "o": 32}, {"t": "Под Северным морем лежит земля, по которой ходили люди. Куда исчез Доггерленд?", "v": 6, "u": "atLkBV3QGn4D3G3N", "c": "under", "a": null, "o": 33}, {"t": "Дома остались, люди исчезли: загадка города, который вулкан похоронил задолго до Помпей", "v": 7, "u": "atR5gm5_mWPIBxfR", "c": "arch", "a": 1947, "o": 34}, {"t": "2000 лет под вулканом: археологи нашли кровати, двери и следы последних минут погибшего города", "v": 1128, "u": "atMZLUz4Fk2YQP0k", "c": "arch", "a": 2000.0, "o": 35}, {"t": "Они построили город подо льдом и бросили его. Что осталось внутри спустя почти 60 лет", "v": 327, "u": "atMMWF3QGn4DByMY", "c": "under", "a": null, "o": 36}, {"t": "8 дней без солнца: что скрывает пещера в Абхазии глубиной больше двух километров", "v": 58, "u": "atMHJL4QihRSlksG", "c": "under", "a": null, "o": 37}, {"t": "Земля купцов, о которой почти забыли: как Согдиана соединяла чужие миры", "v": 12, "u": "atLmbYn3yzaETY5X", "c": "history", "a": null, "o": 38}, {"t": "Они построили город на искусственных островах. Почему Нан-Мадол остался пустым?", "v": 4, "u": "atLlj42n7k2QfWe_", "c": "arch", "a": null, "o": 39}, {"t": "Под Храмом Гроба Господня раскрыли древний Иерусалим – что нашли археологи", "v": 212, "u": "asZV8UwDkhlokNca", "c": "under", "a": null, "o": 40}, {"t": "От Земли до края Вселенной: 20 снимков, от которых захватывает дух", "v": 7, "u": "atDLfjSVXl36kOF-", "c": "space", "a": null, "o": 41}, {"t": "Эрмитаж, каким вы его не знали: 15 удивительных историй о сокровищах, тайнах и спасённых шедеврах", "v": 3, "u": "asflDowiwnKC5ARa", "c": "museum", "a": null, "o": 42}, {"t": "«Васа»: корабль, который затонул за минуты, а через 333 года стал сенсацией", "v": 14, "u": "atBn04UktWiumprx", "c": "sea", "a": 333.0, "o": 43}, {"t": "Джоконду украли из Лувра. Два года шедевр прятался в обычной комнате", "v": 2, "u": "ast3VL9EDjlgxzR2", "c": "museum", "a": null, "o": 44}, {"t": "Последний день Помпей: что археологи обнаружили в городе, который исчез под пеплом", "v": 2099, "u": "aszbQySt_WXlvjoa", "c": "arch", "a": 1947, "o": 45}, {"t": "Они ушли искать морской путь и не вернулись: почему экспедицию Франклина не спасли даже лучшие корабли", "v": 4, "u": "as7zDP1TDxoDYqoo", "c": "sea", "a": null, "o": 46}, {"t": "Музей Прадо: 9 картин, в которых спрятаны королевские тайны, страхи и целые миры", "v": 4, "u": "as2uK7jXMVgljCJy", "c": "museum", "a": null, "o": 47}, {"t": "12 сокровищ Британского музея, за которыми скрываются невероятные истории", "v": 18, "u": "asyrS0Z8ZShLmg_h", "c": "museum", "a": null, "o": 48}, {"t": "Из глубин космоса пришёл сигнал. Он летел к Земле почти 11 миллиардов лет", "v": 20, "u": "asiEebk0XEpLGQFn", "c": "space", "a": 11000000000.0, "o": 49}, {"t": "Труп с секретными письмами обманул нацистов: операция 1943 года", "v": 26, "u": "ast583eRVSPG-SNd", "c": "history", "a": 83, "o": 50}, {"t": "Солнце вывело из строя телеграф: что произошло с Землёй в 1859 году", "v": 3, "u": "ast5u9jdjCJTEMjw", "c": "space", "a": 167, "o": 51}, {"t": "В Китае нашли 8000 глиняных воинов. Почему гробницу императора до сих пор не открыли?", "v": 13, "u": "asnat4ZFzXeQSTT8", "c": "arch", "a": null, "o": 52}, {"t": "Викинги похоронили целый корабль. Через 1000 лет внутри нашли двух женщин", "v": 2, "u": "asnURcWsUymIAtAB", "c": "sea", "a": 1000.0, "o": 53}, {"t": "Тунгусский метеорит: взрыв, уничтоживший огромный участок тайги. Почему учёные не нашли кратер?", "v": 5, "u": "asjjFY-n_QxJg2j3", "c": "space", "a": null, "o": 54}, {"t": "2000 лет назад создали компьютер? Загадка механизма, найденного на дне моря", "v": 8, "u": "asjeCcA1tTrcOcDT", "c": "sea", "a": 2000.0, "o": 55}, {"t": "17 гигантских голов Мексики: как древние люди перевозили камни весом в десятки тонн?", "v": 2, "u": "asjYCb9EDjlg7pav", "c": "arch", "a": null, "o": 56}, {"t": "Хотел построить террасу – и нашёл 18,5 кг серебра викингов. Кто спрятал этот клад?", "v": 14, "u": "aseOlFhyIit0mD_M", "c": "arch", "a": null, "o": 57}, {"t": "Лувр ограбили за семь минут: корону нашли на земле, а драгоценности на 88 миллионов евро исчезли", "v": 3, "u": "aseV-lhyIit0yOoi", "c": "museum", "a": null, "o": 58}, {"t": "Большой Египетский музей: 15 удивительных историй, которые скрывают сокровища фараонов", "v": 163, "u": "asfYe7kgYSo2d9Mk", "c": "museum", "a": null, "o": 59}, {"t": "В поле нашли загадочный предмет с 12 гранями – зачем он был нужен римлянам?", "v": 5, "u": "asdxc6g6UjmzML7q", "c": "arch", "a": null, "o": 60}, {"t": "217 лет никто не мог прочитать секретное письмо 1809 года – ИИ раскрыл его содержание", "v": 9, "u": "asds90wDkhlo_ZtR", "c": "history", "a": 217, "o": 61}, {"t": "В Норвегии растаял древний лёд – из-под него появились стрелы возрастом до 6000 лет", "v": 8, "u": "asdhPlafAhIiCjV-", "c": "arch", "a": 6000.0, "o": 62}, {"t": "Астронавты увидели пять вспышек на Луне – NASA объяснило их происхождение", "v": 3, "u": "asdYAWd3YgSRJ_W2", "c": "space", "a": null, "o": 63}, {"t": "В Турции нашли крепость размером с 17 футбольных полей – это может быть потерянная столица Урарту", "v": 3, "u": "asdED6g6Ujmz237Q", "c": "arch", "a": null, "o": 64}, {"t": "На дне моря нашли перстень с изображением исчезнувшего чуда света", "v": 2, "u": "asc-pIwiwnKCrepZ", "c": "sea", "a": null, "o": 65}, {"t": "Высота 611: в СССР видели падение светящегося шара – а на сопке нашли странные образцы", "v": 1, "u": "asacTKg6UjmzMov5", "c": "mystery", "a": null, "o": 66}, {"t": "Воронеж, 1989: дети рассказали о посадке НЛО – история, о которой узнал весь мир", "v": 6, "u": "asaSWD8fICTsWsk1", "c": "mystery", "a": 37, "o": 67}, {"t": "Под Воронежем искали НЛО – а заявили, что сфотографировали прошлое", "v": 4, "u": "asaUTB1KWEPlZD89", "c": "mystery", "a": null, "o": 68}, {"t": "В Софийский собор вернули фреску из 500 фрагментов – её собирали из строительного мусора", "v": 1, "u": "asZOI4wiwnKCfQTx", "c": "arch", "a": null, "o": 69}, {"t": "В Новгороде нашли гробницу святой Харитины – что известно о находке под храмом XII века", "v": 13, "u": "asY7tAso8RQbU8eq", "c": "arch", "a": 900, "o": 70}, {"t": "В Турции нашли христианский амулет с золотым листом – его тайну ещё не раскрыли", "v": 1, "u": "asY4zPM0xjO0PkjO", "c": "arch", "a": null, "o": 71}, {"t": "В немецком лесу нашли храм Марса – он лежал всего в нескольких сантиметрах под землёй", "v": 2, "u": "asY1TUwDkhloUVA5", "c": "arch", "a": null, "o": 72}, {"t": "Под Святой Софией нашли подземный мир – тоннели могут тянуться на 9 километров", "v": 1864, "u": "asYq-lX6rneQfx7i", "c": "under", "a": null, "o": 73}, {"t": "На Луне появился новый кратер размером с два футбольных поля – его нашли только спустя год", "v": 5, "u": "asYmOYJUdxLLUSoq", "c": "space", "a": null, "o": 74}, {"t": "За гробницей Тутанхамона снова нашли признаки скрытых комнат – что может быть внутри", "v": 3, "u": "asYdcFhyIit0oLdB", "c": "egypt", "a": null, "o": 75}, {"t": "Почему дома пахнет «старостью», даже если всё чисто – 6 мест, которые обычно забывают", "v": 13, "u": "asYYGzZaHEHXvpKL", "c": "misc", "a": null, "o": 76}, {"t": "Рыбка, которая дышит воздухом и строит гнездо из пузырей: чем удивляет петушок", "v": 49, "u": "asYTwKg6UjmzPr__", "c": "misc", "a": null, "o": 77}, {"t": "Как оживить увядшую зелень за 15 минут – и хранить её свежей дольше", "v": 1, "u": "asYKRkwDkhlo_hG1", "c": "misc", "a": null, "o": 78}, {"t": "Дом, который, по рассказам посетителей, нападает на людей: загадка Sallie House", "v": 1, "u": "asYA4Wd3YgSRD7Fg", "c": "mystery", "a": null, "o": 79}, {"t": "Почему гробница Тутанхамона пережила грабителей", "v": 5, "u": "asW5ujw7qkg-eKJw", "c": "egypt", "a": null, "o": 80}, {"t": "Рим пал не только из-за варваров", "v": 1, "u": "asVeofTCPDt_bGUT", "c": "history", "a": null, "o": 81}, {"t": "Следы астронавтов на Луне могут прожить миллионы лет", "v": 1, "u": "asW8RYq_jR1SRxXd", "c": "space", "a": null, "o": 82}, {"t": "Римский бетон умел лечить трещины", "v": 1, "u": "asVCo8vU_1XjJN-M", "c": "history", "a": null, "o": 83}, {"t": "ДНК викингов разрушила старый миф", "v": 2, "u": "asUhCvpWsHNebjoA", "c": "history", "a": null, "o": 84}, {"t": "Наполеона победила не русская зима - что на самом деле уничтожило Великую армию", "v": 6, "u": "asUrUlOkzErdO20L", "c": "history", "a": null, "o": 85}, {"t": "Мир уже катился к войне - но почти никто не решился его остановить", "v": 2, "u": "asUhHfpWsHNebmEM", "c": "history", "a": null, "o": 86}];
+const CATS = {arch:"Археология",under:"Подземелья и пещеры",egypt:"Египет",sea:"Море и корабли",history:"История",museum:"Музеи и шедевры",space:"Космос",mystery:"Загадки",misc:"Разное"};
+const url = u => "https://dzen.ru/a/" + u;
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtAge = a => a >= 1000 ? (Math.round(a/100)/10).toLocaleString("ru-RU") + " тыс. лет" : Math.round(a) + " лет";
+
+// strata
+const layers = [
+  {max:500, title:"до 500 лет", note:"Новое время"},
+  {max:3000, title:"500 – 3 000 лет", note:"Античность и Средние века"},
+  {max:10000, title:"3 000 – 10 000 лет", note:"Первые города и пирамиды"},
+  {max:1e6, title:"глубже 10 000 лет", note:"Ледниковый период"}
+];
+const dated = D.filter(d => d.a && d.a < 1e6).sort((x,y) => x.a - y.a);
+let lo = 0;
+document.getElementById("strata").innerHTML = layers.map(L => {
+  const items = dated.filter(d => d.a >= lo && d.a < L.max); lo = L.max;
+  return `<div class="layer"><div class="depth"><b>${L.title}</b><span>${L.note}</span></div><div class="finds">${
+    items.map(d => `<a class="find" href="${url(d.u)}" target="_blank" rel="noopener"><span>${esc(short(d.t))}</span><i>${fmtAge(d.a)}</i></a>`).join("")
+  }</div></div>`;
+}).join("");
+function short(t){ const p = t.split(/[.:?]\s| – | - /)[0]; return p.length > 70 ? p.slice(0,68) + "…" : p; }
+
+// top
+const top = [...D].sort((a,b) => b.v - a.v).slice(0,3);
+document.getElementById("top").innerHTML = top.map(d =>
+  `<a class="lead" href="${url(d.u)}" target="_blank" rel="noopener"><h3>${esc(d.t)}</h3><div class="meta"><span>${CATS[d.c]}</span><span>${d.v.toLocaleString("ru-RU")} просмотров</span></div></a>`).join("");
+
+// archive
+let cat = "all", q = "";
+const counts = D.reduce((m,d) => (m[d.c] = (m[d.c]||0)+1, m), {});
+const order = ["all", ...Object.keys(CATS).filter(k => counts[k]).sort((a,b) => (a==="misc")-(b==="misc") || counts[b]-counts[a])];
+const chips = document.getElementById("chips");
+chips.innerHTML = order.map(k => `<button class="chip" id="c-${k}" data-c="${k}" aria-pressed="${k===cat}">${k==="all"?"Все":CATS[k]}<sup>${k==="all"?D.length:counts[k]}</sup></button>`).join("");
+chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = b.dataset.c;
+  chips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b)); render(); });
+document.getElementById("q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); render(); });
+function render(){
+  const list = D.filter(d => (cat==="all" || d.c===cat) && (!q || d.t.toLowerCase().includes(q))).sort((a,b) => a.o - b.o);
+  document.getElementById("grid").innerHTML = list.map(d =>
+    `<a class="card" href="${url(d.u)}" target="_blank" rel="noopener"><div class="row"><span class="tag">${CATS[d.c]}</span>${d.a && d.a<1e6 ? `<span class="age">${fmtAge(d.a)}</span>`:""}</div><h3>${esc(d.t)}</h3><span class="go">Читать на Дзене →</span></a>`).join("");
+  document.getElementById("empty").hidden = list.length > 0;
+  document.getElementById("shown").textContent = list.length === D.length ? "Сначала новые." : `Показано ${list.length} из ${D.length}.`;
+}
+render();
+document.getElementById("f-count").textContent = D.length;
+</script>
+</body>
+</html>
