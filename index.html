@@ -207,14 +207,6 @@ footer{padding-block:22px 44px;color:var(--muted);font-size:13.5px;border-top:1p
 .map-note{position:absolute;left:14px;bottom:10px;margin:0;font:500 12px/1 var(--f-mono);color:var(--muted);pointer-events:none}
 @media (max-width:640px){.map-pop{position:fixed;left:max(12px,env(safe-area-inset-left,0px))!important;right:max(12px,env(safe-area-inset-right,0px));top:auto!important;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;max-width:none;z-index:55}.map-pop img{height:120px}.map-note{display:none}}
 
-.map-regions{margin-bottom:14px}
-.map svg{touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.map.zoomed svg{touch-action:none;cursor:grab}
-.map.dragging svg{cursor:grabbing}
-.map .land,.map .grat,.map .pt .core{vector-effect:non-scaling-stroke}
-.map-zoom{position:absolute;right:12px;top:12px;display:grid;gap:6px;z-index:2}
-.map-zoom button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:rgba(6,10,21,.8);color:var(--ink);font:500 20px/1 var(--f-body)}
-.map-zoom button:hover{border-color:var(--lamp)}
 /* map zoom */
 .map path,.map circle{vector-effect:non-scaling-stroke}
 #map-svg{touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
@@ -276,8 +268,7 @@ footer{padding-block:22px 44px;color:var(--muted);font-size:13.5px;border-top:1p
     <h2 id="h-map">Карта находок</h2>
     <p>Где это нашли. Нажмите на золотую точку, чтобы увидеть находку.</p>
   </div>
-  <div class="chips map-regions" id="map-regions" role="group" aria-label="Регионы"></div>
-  <div class="map" id="map"><div class="map-ui"><div class="map-reg" role="group" aria-label="Регион"><button type="button" data-r="world" aria-pressed="true">Весь мир</button><button type="button" data-r="eu" aria-pressed="false">Европа</button><button type="button" data-r="med" aria-pressed="false">Средиземноморье</button><button type="button" data-r="egypt" aria-pressed="false">Египет и Ближний Восток</button><button type="button" data-r="am" aria-pressed="false">Америка</button><button type="button" data-r="ru" aria-pressed="false">Россия</button></div><div class="map-zoom"><button type="button" data-z="in" aria-label="Приблизить">+</button><button type="button" data-z="out" aria-label="Отдалить">−</button></div></div><p class="map-hint" id="map-hint" hidden>Чтобы приблизить, крутите колесо с зажатым Ctrl</p><svg id="map-svg" role="group" aria-label="Карта мира с местами находок"></svg><div class="map-zoom"><button type="button" id="mz-in" aria-label="Приблизить">+</button><button type="button" id="mz-out" aria-label="Отдалить">−</button></div><div class="map-pop" id="map-pop" hidden></div><p class="map-note" id="map-note"></p></div>
+  <div class="map" id="map"><div class="map-ui"><div class="map-reg" role="group" aria-label="Регион"><button type="button" data-r="world" aria-pressed="true">Весь мир</button><button type="button" data-r="eu" aria-pressed="false">Европа</button><button type="button" data-r="med" aria-pressed="false">Средиземноморье</button><button type="button" data-r="egypt" aria-pressed="false">Египет и Ближний Восток</button><button type="button" data-r="am" aria-pressed="false">Америка</button><button type="button" data-r="ru" aria-pressed="false">Россия</button></div><div class="map-zoom"><button type="button" data-z="in" aria-label="Приблизить">+</button><button type="button" data-z="out" aria-label="Отдалить">−</button></div></div><p class="map-hint" id="map-hint" hidden>Чтобы приблизить, крутите колесо с зажатым Ctrl</p><svg id="map-svg" role="group" aria-label="Карта мира с местами находок"></svg><div class="map-pop" id="map-pop" hidden></div><p class="map-note" id="map-note"></p></div>
 </section>
 
 <section class="wrap" aria-labelledby="h-strata">
