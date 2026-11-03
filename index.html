@@ -335,6 +335,31 @@ html{scroll-padding-top:70px}
 :root[data-theme="light"] .hero .btn:not(.ghost){color:#1A1208}
 :root[data-theme="light"] .day{background:linear-gradient(135deg,rgba(154,106,20,.10),rgba(29,102,179,.05) 60%),var(--card);box-shadow:0 14px 40px rgba(60,40,10,.12)}
 
+/* planet weather */
+.wx-mars{display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px;align-items:center;padding:22px;border-radius:16px;border:1px solid rgba(214,110,60,.5);background:radial-gradient(70% 140% at 0% 50%,rgba(214,110,60,.22),transparent 60%),var(--card);margin-bottom:14px}
+.wx-mars .disc{width:120px;height:120px}
+.wx-mars h3{font:400 clamp(22px,2.6vw,30px)/1.15 var(--f-display);margin:0 0 6px}
+.wx-mars .sub{color:var(--muted);margin:0 0 14px}
+.wx-stats{display:flex;flex-wrap:wrap;gap:10px 28px}
+.wx-stats div{display:grid;gap:3px}
+.wx-stats b{font:500 20px/1.1 var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.wx-stats span{font:500 11px/1.2 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wx-alert{display:inline-block;margin-top:12px;font:500 13px/1.3 var(--f-body);padding:7px 11px;border-radius:999px;background:rgba(214,110,60,.18);color:#F0A57A}
+.wx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.wx{display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--card);min-width:0}
+.wx-top{display:flex;align-items:center;gap:12px}
+.wx-top h3{font:400 21px/1.1 var(--f-display);margin:0}
+.wx-top small{display:block;font:500 11px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.disc{flex:none;width:46px;height:46px;border-radius:50%;box-shadow:inset -8px -6px 14px rgba(0,0,0,.55),0 0 18px rgba(255,255,255,.06)}
+.wx-t{font:500 30px/1 var(--f-mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.wx-t em{font-style:normal;font-size:15px;color:var(--muted)}
+.wx-today{margin:0;font-size:14.5px;line-height:1.45;color:var(--ink)}
+.wx-today::before{content:"Сегодня: ";color:var(--lamp);font-weight:600}
+.wx-meta{display:flex;flex-wrap:wrap;gap:6px 12px;font:500 12px/1.3 var(--f-mono);color:var(--muted)}
+.wx-note{margin:12px 0 0;color:var(--muted);font-size:14px}.wx-note a{color:var(--sky)}
+@media (max-width:560px){.wx-mars{grid-template-columns:1fr}.wx-mars .disc{width:84px;height:84px}}
+@media (prefers-reduced-motion:no-preference){.disc{animation:spin 40s linear infinite}@keyframes spin{to{background-position:200% 0}}}
+
 /* star cursor */
 @media (pointer:fine){html,body{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2228%22%20height%3D%2228%22%20viewBox%3D%220%200%2028%2028%22%3E%3Cpath%20d%3D%22M14%201C14.6%209%2019%2013.4%2027%2014C19%2014.6%2014.6%2019%2014%2027C13.4%2019%209%2014.6%201%2014C9%2013.4%2013.4%209%2014%201Z%22%20fill%3D%22%23F3CF7A%22%20stroke%3D%22%233A2A08%22%20stroke-width%3D%221.2%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2214%22%20cy%3D%2214%22%20r%3D%222.2%22%20fill%3D%22%23FFF8DC%22/%3E%3C/svg%3E") 14 14,auto}a,button,[role=button],.chip,.g-opt,label{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2214%22%20fill%3D%22none%22%20stroke%3D%22%235DB2FF%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M16%204C16.5%2011%2021%2015.5%2028%2016C21%2016.5%2016.5%2021%2016%2028C15.5%2021%2011%2016.5%204%2016C11%2015.5%2015.5%2011%2016%204Z%22%20fill%3D%22%23F3CF7A%22%20stroke%3D%22%233A2A08%22%20stroke-width%3D%221.1%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E") 16 16,pointer}input[type=search]{cursor:text}}
 #trail{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
@@ -363,7 +388,7 @@ html{scroll-padding-top:70px}
 <body>
 <div class="bar" id="bar" aria-hidden="true"><div class="wrap bar-in">
   <a class="bar-brand" href="#" data-top><img src="images/logo-128.jpg" alt=""><span>Не все <b>так просто!</b></span></a>
-  <nav class="bar-links" aria-label="Разделы"><a href="#h-map">Карта</a><a href="#h-tl">Эпохи</a><a href="#h-tm">Игры</a><a href="#h-all" id="bar-all">Статьи</a><a href="#h-fav" id="bar-fav" hidden>Мои ★</a></nav>
+  <nav class="bar-links" aria-label="Разделы"><a href="#h-map">Карта</a><a href="#h-tl">Эпохи</a><a href="#h-wx">Космос</a><a href="#h-tm">Игры</a><a href="#h-all" id="bar-all">Статьи</a><a href="#h-fav" id="bar-fav" hidden>Мои ★</a></nav>
   <div class="bar-tools"><button class="tbtn" type="button" data-fs aria-label="Размер шрифта">Aa</button><button class="tbtn" type="button" data-th aria-label="Светлая или тёмная тема">☀</button><a class="bar-vk" href="https://vk.com/club242138041" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12.8 17.3c-5.5 0-8.6-3.8-8.8-10h2.8c.1 4.6 2.1 6.5 3.7 6.9V7.3h2.6v3.9c1.6-.2 3.3-2 3.8-3.9h2.6c-.4 2.4-2.2 4.2-3.4 4.9 1.2.6 3.2 2.1 3.9 4.9h-2.9c-.6-1.9-2.1-3.3-4-3.5v3.5h-.3z"/></svg></a><a class="bar-dz" href="https://dzen.ru/id/6ac51b68ff198c5f7a5f1dab" target="_blank" rel="noopener">Дзен</a></div>
 </div></div>
 <button class="totop" id="totop" type="button" aria-label="Наверх" hidden>↑</button>
@@ -429,6 +454,16 @@ html{scroll-padding-top:70px}
     <div class="tl-scroll" id="tl" tabindex="0" aria-label="Шкала времени с находками"></div>
     <div class="tl-ctl"><button class="tl-b" type="button" data-d="-1" aria-label="Назад во времени">←</button><span class="label" id="tl-now">130 тыс. лет назад</span><button class="tl-b" type="button" data-d="1" aria-label="Вперёд во времени">→</button></div>
   </div>
+</section>
+
+<section class="wrap" aria-labelledby="h-wx">
+  <div class="sec-head">
+    <h2 id="h-wx">Погода в Солнечной системе</h2>
+    <p>Прогноз на <span id="wx-date">сегодня</span>. Марс считаем вживую по формулам NASA, для остальных планет даём реальный климат и явление дня.</p>
+  </div>
+  <div class="wx-mars" id="wx-mars"></div>
+  <div class="wx-grid" id="wx-grid"></div>
+  <p class="wx-note">Температуры — типичные значения по данным космических миссий. <a href="/r/space/">Статьи про космос →</a></p>
 </section>
 
 <section class="wrap" aria-labelledby="h-game">
@@ -1054,6 +1089,61 @@ const sp = u => (typeof SLUG !== "undefined" && SLUG[u]) ? "/st/" + SLUG[u] + "/
   addEventListener("beforeinstallprompt", e => { e.preventDefault(); ev = e; if (ib) ib.hidden = false; });
   if (ib) ib.addEventListener("click", async () => { if (!ev) return; ev.prompt(); await ev.userChoice; ev = null; ib.hidden = true; });
   if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+})();
+
+// planet weather
+(function(){
+  const mars = document.getElementById("wx-mars"), grid = document.getElementById("wx-grid"); if (!mars) return;
+  const now = new Date(), msk = new Date(now.getTime() + (now.getTimezoneOffset() + 180) * 60000);
+  document.getElementById("wx-date").textContent = msk.toLocaleDateString("ru-RU", {day:"numeric", month:"long"});
+  const day = Math.floor(Date.UTC(msk.getFullYear(), msk.getMonth(), msk.getDate()) / 864e5);
+  const pick = (a, k) => a[(day * 31 + k * 17) % a.length];
+  const rad = Math.PI / 180, fix = x => ((x % 360) + 360) % 360;
+  // Mars24 algorithm (Allison & McEwen 2000)
+  function marsNow(){
+    const jd = Date.now() / 864e5 + 2440587.5, dt = jd + 69.184 / 86400 - 2451545.0;
+    const M = fix(19.3871 + 0.52402073 * dt), a = fix(270.3871 + 0.524038496 * dt);
+    const e = (10.691 + 3e-7 * dt) * Math.sin(M*rad) + 0.623 * Math.sin(2*M*rad) + 0.050 * Math.sin(3*M*rad) + 0.005 * Math.sin(4*M*rad) + 0.0005 * Math.sin(5*M*rad);
+    const Ls = fix(a + e), msd = (dt - 4.5) / 1.0274912517 + 44796.0 - 0.0009626, mtc = ((msd % 1) + 1) % 1 * 24;
+    const my = Math.floor((jd - 2435208.5) / 686.9711) + 1;
+    return {Ls, msd, mtc, my};
+  }
+  const hm = h => { h = ((h % 24) + 24) % 24; const H = Math.floor(h), m = Math.floor((h - H) * 60); return String(H).padStart(2, "0") + ":" + String(m).padStart(2, "0"); };
+  const season = Ls => Ls < 90 ? ["весна", "осень"] : Ls < 180 ? ["лето", "зима"] : Ls < 270 ? ["осень", "весна"] : ["зима", "лето"];
+  function drawMars(){
+    const m = marsNow(), [n, sth] = season(m.Ls), dust = m.Ls >= 180 && m.Ls <= 330;
+    const gale = m.mtc + 137.4 / 15, jez = m.mtc + 77.45 / 15;
+    // Gale crater, ~5°S: warmest around southern summer (Ls≈250)
+    const hi = Math.round(-12 + 10 * Math.cos((m.Ls - 250) * rad)), lo = Math.round(-80 + 8 * Math.cos((m.Ls - 250) * rad));
+    mars.innerHTML = `<span class="disc" style="background:radial-gradient(circle at 35% 30%,#F2A06A,#C45A2C 55%,#6B2A14)"></span>
+      <div><h3>Марс, кратер Гейла — у ровера Curiosity сейчас ${hm(gale)}</h3>
+      <p class="sub">Марсианский год ${m.my}, марсианский день № ${Math.floor(m.msd).toLocaleString("ru-RU")} от начала отсчёта NASA. В северном полушарии ${n}, в южном — ${sth}. Ожидается примерно от ${lo}° до ${hi}°C.</p>
+      <div class="wx-stats"><div><b>${hm(gale)}</b><span>Curiosity, Гейл</span></div><div><b>${hm(jez)}</b><span>Perseverance, Езеро</span></div><div><b>${m.Ls.toFixed(1)}°</b><span>долгота Солнца Ls</span></div><div><b>${lo}…${hi}°</b><span>ночь…день, °C</span></div></div>
+      ${dust ? '<span class="wx-alert">Сезон пыльных бурь: в это время года на Марсе чаще всего поднимается пыль, иногда на всю планету</span>' : '<span class="wx-alert">Пыльные бури сейчас редки: сезон бурь начнётся при Ls 180°</span>'}</div>`;
+  }
+  drawMars(); setInterval(drawMars, 30000);
+
+  const P = [
+    {n:"Меркурий", g:"#B7B1A8,#7D776F,#3F3B36", t:"−180…+430", w:"атмосферы почти нет", d:"сутки — 176 земных дней", today:[
+      "днём жарче, чем в духовке, ночью холоднее, чем в Антарктиде", "ясно: облаков на Меркурии не бывает", "в полярных кратерах, куда не заглядывает Солнце, лежит лёд", "солнечный ветер выдувает из почвы натрий — у планеты слабый хвост, как у кометы"]},
+    {n:"Венера", g:"#F3D9A0,#D9A85A,#8A5F22", t:"+465", w:"ветер наверху до 360 км/ч", d:"сутки длиннее года", today:[
+      "сплошная облачность из серной кислоты, Солнца не видно", "давление у поверхности — как на глубине 900 м в океане", "облака облетают планету за 4 дня, а сама она вращается в 60 раз медленнее", "у поверхности почти штиль, но воздух плотный, как жидкость", "Солнце, если бы его было видно, вставало бы на западе"]},
+    {n:"Юпитер", g:"#F0D7B4,#C9925E,#7A4C2C", t:"−145", w:"в Большом красном пятне до 430 км/ч", d:"сутки — 9 ч 56 мин", today:[
+      "Большое красное пятно — шторм шире Земли, бушует уже больше 350 лет", "грозы с молниями в разы мощнее земных", "в облаках возможен аммиачный град", "над полюсами полярные сияния ярче, чем где-либо в Солнечной системе"]},
+    {n:"Сатурн", g:"#F2E1B6,#D2B57A,#8C7240", t:"−178", w:"ветер до 1800 км/ч", d:"сутки — 10 ч 33 мин", today:[
+      "над северным полюсом крутится шестиугольный вихрь шире двух Земель", "ветер на экваторе быстрее звука на Земле", "раз в 20–30 лет здесь поднимается Великое белое пятно — гигантский шторм", "кольца отбрасывают на облака широкую тень"]},
+    {n:"Титан", g:"#F3C46A,#C98A2E,#6E4612", t:"−179", w:"слабый ветер, ~1 м/с", d:"спутник Сатурна", today:[
+      "возможен метановый дождь: капли падают медленно, как снежинки", "оранжевый смог, видимость низкая", "в морях из жидкого метана и этана штиль", "давление у поверхности в полтора раза выше земного — здесь можно летать, махая крыльями"]},
+    {n:"Уран", g:"#D7F4F5,#8FD3D8,#3E8B92", t:"−224", w:"ветер до 900 км/ч", d:"лежит на боку", today:[
+      "самая холодная атмосфера среди планет", "полюс по 42 года смотрит на Солнце, а потом 42 года живёт в темноте", "в глубине, по расчётам учёных, могут идти алмазные дожди", "облака из метанового льда"]},
+    {n:"Нептун", g:"#7FA8FF,#3F63D8,#1A2A7A", t:"−214", w:"ветер до 2100 км/ч — рекорд", d:"год — 165 земных лет", today:[
+      "самые быстрые ветры в Солнечной системе", "в атмосфере появляются тёмные пятна-вихри размером с Землю", "белые перистые облака из метанового льда", "Солнце отсюда выглядит просто очень яркой звездой"]},
+    {n:"Плутон", g:"#E9D6C2,#B48E6E,#5E4433", t:"−230", w:"почти безветренно", d:"карликовая планета", today:[
+      "лёгкая голубая дымка в разреженной атмосфере", "на равнине Спутника — ледники из азотного льда", "снег из метана на вершинах гор", "днём светло примерно как на Земле в сумерках"]},
+  ];
+  grid.innerHTML = P.map((p, i) => { const c = p.t.includes("…") ? p.t.split("…") : null;
+    return `<article class="wx"><div class="wx-top"><span class="disc" style="background:radial-gradient(circle at 35% 30%,${p.g})"></span><div><h3>${p.n}</h3><small>${p.d}</small></div></div>
+      <div class="wx-t">${c ? `${c[0]}<em>…</em>${c[1]}` : p.t}<em> °C</em></div><p class="wx-today">${pick(p.today, i)}</p><div class="wx-meta"><span>${p.w}</span></div></article>`; }).join("");
 })();
 
 // star trail behind the cursor
