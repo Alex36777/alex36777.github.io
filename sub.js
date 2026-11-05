@@ -65,7 +65,7 @@
 
   /* 1. Постоянный блок перед подвалом */
   function box(){
-    var foot = document.querySelector("footer"); if (!foot) return;
+    var foot = document.querySelector("footer"); if (!foot || document.getElementById("grid")) return; // на главной свой блок подписки
     var w = document.createElement("div"); w.className = "vs-wrap";
     w.innerHTML = '<section class="vs-box" aria-label="Подписка"><div class="vs-txt"><b>Новые находки каждый день</b><span>Подпишитесь на «Не все так просто!» во ВКонтакте: археология, тайны истории и космос прямо в вашей ленте.</span></div><div class="vs-act"></div></section>';
     var act = w.querySelector(".vs-act"), b = btn("box");
