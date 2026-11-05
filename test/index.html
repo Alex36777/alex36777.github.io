@@ -225,7 +225,7 @@ const SLUG = {
   function final(){
     let n = 0; LV.forEach((l, k) => { if (total >= l.m) n = k; });
     const L = LV[n], url = location.origin + "/test/r/" + (n + 1) + "/";
-    const txt = `Я набрал ${total} из 1000 в тесте «Сколько лет этой находке?» и получил звание «${L.t}». А вы сможете больше?`;
+    const txt = `Мой результат ${total} из 1000 в тесте «Сколько лет этой находке?» и звание «${L.t}». А вы сможете больше?`;
     let best = 0; try { best = +localStorage.getItem("nvp_quiz") || 0; if (total > best) localStorage.setItem("nvp_quiz", total); } catch(e){}
     goal("quiz_done");
     card.innerHTML = `<div class="qz-final"><span class="kicker">Ваш результат</span>
