@@ -66,6 +66,7 @@ footer{padding-block:40px 32px;color:var(--muted);font-size:14px}
 /* full article */
 .full{font-size:1.08em;line-height:1.72}
 .full p{margin:0 0 1em}
+.full ul{margin:0 0 1em;padding-left:1.2em}.full li{margin:.3em 0}
 .full h2{font:400 1.45em/1.25 var(--f-display);margin:1.6em 0 .6em;text-wrap:balance;color:var(--ink)}
 .full figure{margin:1.4em 0}
 .full figure img{display:block;width:100%;height:auto;border-radius:14px;background:var(--soil)}
