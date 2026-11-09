@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Игра «Археолог»: раскопки на рекорд — Не все так просто!</title>
+<meta name="description" content="Копайте вглубь веков: угадывайте находки, набирайте очки и попадите в таблицу лучших археологов недели.">
+<link rel="canonical" href="https://nevsetakprosto.ru/igra/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Не все так просто!">
+<meta property="og:title" content="Игра «Археолог»: раскопки на рекорд">
+<meta property="og:description" content="Копайте вглубь веков: угадывайте находки, набирайте очки и попадите в таблицу лучших археологов недели.">
+<meta property="og:image" content="https://nevsetakprosto.ru/test/og.jpg">
+<meta property="og:url" content="https://nevsetakprosto.ru/igra/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#060A15">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/images/logo-128.jpg">
+<script>try{var _t=localStorage.getItem("nvp_theme"),_f=localStorage.getItem("nvp_fs");if(_t)document.documentElement.dataset.theme=_t;if(_f)document.documentElement.dataset.fs=_f}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="/st/st.css?v=4">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114022016', 'ym');
+
+    ym(114022016, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114022016" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<style>
+.ig{max-width:860px;padding-block:8px 40px}
+.ig h1{font:400 clamp(30px,6vw,48px)/1.08 var(--f-display);margin:8px 0 10px;text-wrap:balance}
+.ig-lead{color:var(--muted);margin:0 0 18px;line-height:1.55;max-width:60ch}
+.ig-box{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.ig-start{display:grid;gap:18px;padding:22px}
+.ig-rules{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.ig-rules li{display:flex;gap:12px;align-items:flex-start;line-height:1.45}
+.ig-rules b{color:var(--lamp)}
+.ig-rules .i{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--lamp-soft);font-size:18px}
+.ig-go{font:600 18px/1 var(--f-body);border:0;border-radius:16px;padding:18px 22px;background:var(--lamp);color:#1A1208;cursor:pointer;width:100%}
+.ig-go:hover{filter:brightness(1.08)}
+.ig-go.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.ig-hud{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--card-hi)}
+.ig-score{font:400 28px/1 var(--f-display);color:var(--lamp)}
+.ig-score small{display:block;font:500 11px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ig-mult{font:600 15px/1 var(--f-mono);padding:8px 10px;border-radius:10px;background:var(--lamp-soft);color:var(--lamp);opacity:.35;transition:opacity .2s,transform .2s}
+.ig-mult.on{opacity:1;transform:scale(1.06)}
+.ig-lives{font-size:20px;letter-spacing:2px;white-space:nowrap}
+.ig-lives .off{filter:grayscale(1);opacity:.25}
+.ig-depth{display:flex;align-items:center;gap:10px;padding:10px 16px;font:500 13px/1.3 var(--f-mono);color:var(--muted);border-bottom:1px solid var(--line)}
+.ig-depth b{color:var(--ink);font-family:var(--f-body);font-weight:600}
+.ig-strata{flex:1;display:flex;height:8px;border-radius:6px;overflow:hidden;gap:2px}
+.ig-strata i{flex:1;background:var(--line);transition:background .3s}
+.ig-strata i.on{background:var(--lamp)}
+.ig-timer{height:5px;background:var(--line)}
+.ig-timer i{display:block;height:100%;width:100%;background:var(--sky);transform-origin:left;transition:transform .1s linear}
+.ig-timer.low i{background:#E06A5A}
+.ig-img{position:relative;aspect-ratio:16/9;max-height:400px;width:100%;background:var(--soil);overflow:hidden}
+.ig-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ig-img .tag{position:absolute;left:12px;top:12px;font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:8px;background:rgba(6,10,21,.72);color:#EEF2FA}
+.ig-pts{position:absolute;right:14px;top:10px;font:400 34px/1 var(--f-display);color:var(--lamp);text-shadow:0 2px 12px rgba(0,0,0,.6);opacity:0}
+.ig-pts.fly{animation:fly 1s ease-out}
+@keyframes fly{0%{opacity:0;transform:translateY(10px)}20%{opacity:1}100%{opacity:0;transform:translateY(-30px)}}
+.ig-body{padding:18px 16px 20px;display:grid;gap:14px}
+.ig-q{font-size:18px;line-height:1.45;margin:0;font-weight:500}
+.ig-opts{display:grid;gap:10px}
+@media(min-width:640px){.ig-opts.two{grid-template-columns:1fr 1fr}}
+.ig-opt{font:500 16px/1.35 var(--f-body);text-align:left;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;min-height:52px;transition:border-color .15s,background .15s}
+.ig-opt:hover:not(:disabled){border-color:var(--lamp)}
+.ig-opt:disabled{cursor:default}
+.ig-opt.ok{border-color:#4DBB7A;background:rgba(77,187,122,.16)}
+.ig-opt.bad{border-color:#E06A5A;background:rgba(224,106,90,.16)}
+.ig-opt.big{text-align:center;font:400 22px/1.2 var(--f-display)}
+.ig-end{padding:24px 18px;display:grid;gap:16px;text-align:center}
+.ig-final{font:400 clamp(56px,14vw,86px)/1 var(--f-display);color:var(--lamp)}
+.ig-sub{color:var(--muted);margin:0;line-height:1.5}
+.ig-best{display:inline-block;justify-self:center;font:600 13px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:var(--lamp-soft);color:var(--lamp)}
+.ig-name{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ig-name input{flex:1 1 200px;max-width:280px;font:500 16px/1 var(--f-body);padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.ig-name button{flex:0 0 auto;width:auto;padding:14px 20px;font-size:16px}
+.ig-msg{color:var(--muted);font-size:14px;margin:0;min-height:1em}
+.ig-miss{display:grid;gap:10px;text-align:left}
+.ig-miss h3{margin:6px 0 0;font:400 22px/1.2 var(--f-display);text-align:center}
+.ig-mini{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ig-mini img{width:96px;height:72px;object-fit:cover;display:block}
+.ig-mini span{padding-right:12px;line-height:1.35;font-size:15px}
+.ig-mini:hover{border-color:var(--lamp)}
+.ig-btns{display:grid;gap:10px}
+@media(min-width:640px){.ig-btns{grid-template-columns:1fr 1fr}}
+.ig-share{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ig-share a{font:600 14px/1 var(--f-body);text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:10px 14px}
+.ig-share a:hover{border-color:var(--lamp)}
+.lb{margin-top:22px}
+.lb h2{font:400 clamp(24px,4.5vw,32px)/1.15 var(--f-display);margin:0 0 6px}
+.lb-tabs{display:flex;gap:6px;margin:10px 0 12px}
+.lb-tabs button{font:600 14px/1 var(--f-body);border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 14px;border-radius:999px;cursor:pointer}
+.lb-tabs button[aria-pressed=true]{background:var(--lamp);border-color:var(--lamp);color:#1A1208}
+.lb-t{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.lb-t td{padding:12px 14px;border-top:1px solid var(--line);font-size:15px}
+.lb-t tr:first-child td{border-top:0}
+.lb-t td.n{width:44px;font:500 14px/1 var(--f-mono);color:var(--muted)}
+.lb-t td.s{text-align:right;font:400 20px/1 var(--f-display);color:var(--lamp);white-space:nowrap}
+.lb-t td.d{color:var(--muted);font-size:13px;white-space:nowrap}
+.lb-t tr.me td{background:var(--lamp-soft)}
+.lb-t tr:nth-child(1) td.n{color:#E9B84E}.lb-t tr:nth-child(2) td.n{color:#BFC7D5}.lb-t tr:nth-child(3) td.n{color:#C98A55}
+.lb-empty{padding:18px;color:var(--muted);text-align:center;background:var(--card);border:1px dashed var(--line);border-radius:16px;margin:0}
+@media(max-width:520px){.ig-img{aspect-ratio:2/1}.ig-opt{padding:12px 14px;font-size:15px;min-height:46px}.ig-opt.big{font-size:20px}.ig-body{padding:14px 14px 16px;gap:12px}.ig-q{font-size:17px}.lb-t td.d{display:none}.ig-hud{grid-template-columns:1fr auto auto}.ig-score{font-size:24px}}
+</style>
+</head>
+<body>
+<header class="wrap nav">
+  <a class="brand" href="/"><img src="/images/logo-128.jpg" alt=""><span>Не все <b>так просто!</b></span></a>
+  <span class="nav-r"><button class="tbtn" type="button" data-fs aria-label="Размер шрифта">Aa</button><button class="tbtn" type="button" data-th aria-label="Светлая или тёмная тема">☀</button><a class="btn ghost" href="/test/">Тест</a></span>
+</header>
+<main class="wrap ig">
+  <span class="kicker">Игра · раскопки на рекорд</span>
+  <h1>Археолог</h1>
+  <p class="ig-lead">Копайте вглубь веков: от наших дней до ледникового периода. Узнавайте находки, набирайте очки и попадите в таблицу лучших археологов недели.</p>
+  <section class="ig-box" id="ig" aria-live="polite"><noscript><p style="padding:20px">Для игры нужен JavaScript.</p></noscript></section>
+  <section class="lb" id="lb"></section>
+  <p class="home" style="margin-top:24px"><a class="btn ghost" href="/">← Все находки на главной</a></p>
+</main>
+<script>
+const A = [{"u": "auow3Vf2JX2_tD-z", "t": "Шеститонный камень Стоунхенджа оказался «чужим». Его путь мог составить 750 километров", "c": "arch", "a": null, "s": "shestitonnyy-kamen-stounhendzha-okazalsya-chuzhim-ego-put-mog"}, {"u": "avA9Bd4iqVzJT3nm", "t": "Из болота подняли деревянную фигуру возрастом 12 000 лет. Кто вырезал на ней лица?", "c": "arch", "a": null, "s": "iz-bolota-podnyali-derevyannuyu-figuru-vozrastom-12-000-let-kto"}, {"u": "avA-kss0iwvELzox", "t": "600 лет никто не может прочитать эту книгу. Внутри растения, звёзды и странные слова", "c": "space", "a": 600.0, "s": "600-let-nikto-ne-mozhet-prochitat-etu-knigu-vnutri-rasteniya"}, {"u": "auovABPph27GT__1", "t": "В алтайском кургане нашли женщину с татуировками. Лёд сохранил их 2500 лет", "c": "arch", "a": 2500.0, "s": "v-altayskom-kurgane-nashli-zhenschinu-s-tatuirovkami-led"}, {"u": "auq_oimTMhbxJBhT", "t": "В соляной шахте нашли лестницу возрастом 3100 лет. Её ступени пережили целые государства", "c": "arch", "a": 3100.0, "s": "v-solyanoy-shahte-nashli-lestnicu-vozrastom-3100-let-ee-stupeni"}, {"u": "auq-lHCyIHNHvvC6", "t": "В пустыне построили город на скалах. Его спасала невидимая система водопроводов", "c": "arch", "a": null, "s": "v-pustyne-postroili-gorod-na-skalah-ego-spasala-nevidimaya"}, {"u": "auopoxPph27GR1h-", "t": "Под городом нашли подземный лабиринт. Внутри покоились останки 7000 человек", "c": "under", "a": null, "s": "pod-gorodom-nashli-podzemnyy-labirint-vnutri-pokoilis-ostanki"}, {"u": "auotxm_LXlExq-C6", "t": "На высоте 5000 метров нашли озеро, окружённое сотнями скелетов. Их ДНК удивила учёных", "c": "history", "a": null, "s": "na-vysote-5000-metrov-nashli-ozero-okruzhennoe-sotnyami"}, {"u": "auovU-EW-ijF5xFV", "t": "Четверо подростков нашли вход в пещеру. Внутри их ждали картины возрастом 20 000 лет", "c": "museum", "a": null, "s": "chetvero-podrostkov-nashli-vhod-v-pescheru-vnutri-ih-zhdali"}, {"u": "auowhimTMhbxlyGQ", "t": "ИИ помог найти 303 древних рисунка в пустыне. Почему их не замечали раньше?", "c": "arch", "a": null, "s": "ii-pomog-nayti-303-drevnih-risunka-v-pustyne-pochemu-ih-ne"}, {"u": "auoo_O3-4ik6pWHY", "t": "Птицы падали у входа в пещеру. Древние римляне считали её воротами в ад", "c": "under", "a": null, "s": "pticy-padali-u-vhoda-v-pescheru-drevnie-rimlyane-schitali-ee"}, {"u": "auouXbMiBBjTqGlZ", "t": "Море поглотило египетский город. Через 1200 лет его улицы нашли под водой", "c": "egypt", "a": 1200.0, "s": "more-poglotilo-egipetskiy-gorod-cherez-1200-let-ego-ulicy"}, {"u": "auq__Fh-KAU-Hp2v", "t": "В гробнице Китая нашли 65 бронзовых колоколов. Каждый мог издавать два разных звука", "c": "arch", "a": null, "s": "v-grobnice-kitaya-nashli-65-bronzovyh-kolokolov-kazhdyy-mog"}, {"u": "auq_R-aAdjhpYTaR", "t": "Самолёт просветил джунгли Гватемалы. Под деревьями обнаружили десятки тысяч построек майя", "c": "arch", "a": null, "s": "samolet-prosvetil-dzhungli-gvatemaly-pod-derevyami-obnaruzhili"}, {"u": "auq8yMTfQHN-xSG0", "t": "В кусочке янтаря нашли хвост динозавра. Перья пролежали там 99 миллионов лет", "c": "arch", "a": null, "s": "v-kusochke-yantarya-nashli-hvost-dinozavra-perya-prolezhali-tam"}, {"u": "audvCOKJySTbUFCD", "t": "От девушки в дубовом гробу остались только волосы, ногти и зубы. Но они рассказали, что она прошла 800 километров", "c": "arch", "a": null, "s": "ot-devushki-v-dubovom-grobu-ostalis-tolko-volosy-nogti-i-zuby"}, {"u": "auov6GaSGStrHHUe", "t": "В земле нашли бронзовые лица с выступающими глазами. Им больше 3000 лет", "c": "arch", "a": 3000.0, "s": "v-zemle-nashli-bronzovye-lica-s-vystupayuschimi-glazami-im"}, {"u": "auohjGiWX1zuZ2Ko", "t": "На глубине 750 метров стоит белый «город». Его башни достигают 60 метров – и они растут", "c": "arch", "a": null, "s": "na-glubine-750-metrov-stoit-belyy-gorod-ego-bashni-dostigayut"}, {"u": "aud11npCwlRQmxyY", "t": "Его нашли с петлёй на шее и решили, что это недавнее убийство. Но человеку из Толлунда было 2400 лет", "c": "arch", "a": 2400.0, "s": "ego-nashli-s-petley-na-shee-i-reshili-chto-eto-nedavnee"}, {"u": "aunM3Vy8oFW5S0hg", "t": "На глубине километра нашли озеро внутри моря. Его вода – ловушка для обитателей глубин", "c": "sea", "a": null, "s": "na-glubine-kilometra-nashli-ozero-vnutri-morya-ego-voda"}, {"u": "aumTWVy8oFW54alK", "t": "В древней гробнице нашли прозрачный кинжал. Но кому он принадлежал – загадка", "c": "arch", "a": null, "s": "v-drevney-grobnice-nashli-prozrachnyy-kinzhal-no-komu-on"}, {"u": "aucj1OfJRBWmcLq2", "t": "В древней могиле нашли мужчину с ножом вместо руки. Но настоящую тайну выдали его зубы", "c": "arch", "a": null, "s": "v-drevney-mogile-nashli-muzhchinu-s-nozhom-vmesto-ruki-no"}, {"u": "aucfKPPXA2RbG97b", "t": "Двух детей похоронили 34 тысячи лет назад. В могиле нашли 10 тысяч бусин и кость третьего человека", "c": "arch", "a": 34000.0, "s": "dvuh-detey-pohoronili-34-tysyachi-let-nazad-v-mogile-nashli-10"}, {"u": "augtpYn_1Cc6VO1T", "t": "В древней могиле нашли женщину с чёрным глазом. Его украшали золотые нити", "c": "arch", "a": null, "s": "v-drevney-mogile-nashli-zhenschinu-s-chernym-glazom-ego"}, {"u": "aucYaCuAv38GWARx", "t": "Под дворцом в Египте нашли 12 человеческих рук. Все оказались правыми – и это не случайность", "c": "egypt", "a": null, "s": "pod-dvorcom-v-egipte-nashli-12-chelovecheskih-ruk-vse-okazalis"}, {"u": "aubl04n_1Cc6uTlg", "t": "На отвесной скале стоят фигуры с человеческими лицами. Внутри каждой спрятан мертвец", "c": "arch", "a": null, "s": "na-otvesnoy-skale-stoyat-figury-s-chelovecheskimi-licami-vnutri"}, {"u": "at5KBsuoJhnLzW0L", "t": "Со дна моря подняли тёмный обломок. Внутри оказался механизм, который рассчитывал затмения", "c": "sea", "a": null, "s": "so-dna-morya-podnyali-temnyy-oblomok-vnutri-okazalsya-mehanizm"}, {"u": "auDzVvxZjwBICuuT", "t": "Корабль исчез, а груз остался. У берегов Турции нашли сосуды, которым может быть 4700 лет", "c": "sea", "a": 4700.0, "s": "korabl-ischez-a-gruz-ostalsya-u-beregov-turcii-nashli-sosudy"}, {"u": "auQE-c4p_FDRRhrI", "t": "В Средневековье люди мылись чаще, чем принято думать. Но вот как именно", "c": "history", "a": null, "s": "v-srednevekove-lyudi-mylis-chasche-chem-prinyato-dumat-no-vot"}, {"u": "auRZVQx1wwPBsAf5", "t": "Что скрывали в стенах старых домов? Ведьмины бутылки и вещи для защиты от зла", "c": "mystery", "a": null, "s": "chto-skryvali-v-stenah-staryh-domov-vedminy-butylki-i-veschi"}, {"u": "auQBQJmPxycDtK7D", "t": "Чем на самом деле пахли русские царевны до появления духов", "c": "history", "a": null, "s": "chem-na-samom-dele-pahli-russkie-carevny-do-poyavleniya-duhov"}, {"u": "auMHgyuAv38Gz2Wy", "t": "Он лежал в пещере больше 130 тысяч лет. За это время его покрыл камень", "c": "under", "a": 130000.0, "s": "on-lezhal-v-peschere-bolshe-130-tysyach-let-za-eto-vremya-ego"}, {"u": "auDq0hIfBDqYlDtR", "t": "В пустыне нашли могилу длиной почти 55 метров с каменными «антеннами»: внутри – один человек и четыре бусины из страусиных яиц", "c": "arch", "a": null, "s": "v-pustyne-nashli-mogilu-dlinoy-pochti-55-metrov-s-kamennymi"}, {"u": "auI4ROfJRBWmd48R", "t": "В Мексике нашли гигантскую «карту Вселенной». Разгадку спрятали в яме с цветной землёй", "c": "arch", "a": null, "s": "v-meksike-nashli-gigantskuyu-kartu-vselennoy-razgadku-spryatali"}, {"u": "auFfCbSAqUsEQ-BT", "t": "На 2200-летних воинах нашли 79 отпечатков пальцев. Они указали на женщин и детей среди создателей терракотовой армии", "c": "arch", "a": 2200.0, "s": "na-2200-letnih-voinah-nashli-79-otpechatkov-palcev-oni-ukazali"}, {"u": "auFj4-DRN1wZIDlI", "t": "Серп на шее, замок на ноге: зачем в Европе запирали могилы «вампиров»", "c": "mystery", "a": null, "s": "serp-na-shee-zamok-na-noge-zachem-v-evrope-zapirali-mogily"}, {"u": "auASxZXnO2bSkWhr", "t": "На дне подводной пещеры в Мексике нашли девушку. Она жила почти 13 тысяч лет назад", "c": "under", "a": 13000.0, "s": "na-dne-podvodnoy-peschery-v-meksike-nashli-devushku-ona-zhila"}, {"u": "at8iRKca6RJHMyLM", "t": "Под пирамидой в Мексике нашли тоннель. В его темноте люди создали собственное звёздное небо", "c": "under", "a": null, "s": "pod-piramidoy-v-meksike-nashli-tonnel-v-ego-temnote-lyudi"}, {"u": "at45wwjavwEF9vkq", "t": "В Мексике нашли «инопланетные» черепа. Настоящая история оказалась сложнее сенсации", "c": "mystery", "a": null, "s": "v-meksike-nashli-inoplanetnye-cherepa-nastoyaschaya-istoriya"}, {"u": "at5AKywLBQkRCehU", "t": "Шахтёры вскрыли пещеру с кристаллами величиной с дом. Почему внутри нельзя было задерживаться", "c": "under", "a": null, "s": "shahtery-vskryli-pescheru-s-kristallami-velichinoy-s-dom"}, {"u": "at25vpcSa1R38BDP", "t": "В египетской мумии нашли текст. Когда его прочитали, оказалось - это Гомер", "c": "egypt", "a": null, "s": "v-egipetskoy-mumii-nashli-tekst-kogda-ego-prochitali-okazalos"}, {"u": "at20xWOyflHhKGVQ", "t": "Его нашли в египетской гробнице и 64 года не замечали. Это платье оказалось старше пирамид", "c": "egypt", "a": 5000, "s": "ego-nashli-v-egipetskoy-grobnice-i-64-goda-ne-zamechali-eto"}, {"u": "atzgBOF9tlMzIfQ6", "t": "Он продал плохую медь и получил жалобу. Спустя 3800 лет её всё ещё читают", "c": "arch", "a": 3800.0, "s": "on-prodal-plohuyu-med-i-poluchil-zhalobu-spustya-3800-let-ee"}, {"u": "atxbbek2jUotHPni", "t": "Гробница оставалась запечатанной 600 лет. Красный череп стал одной из её загадок", "c": "arch", "a": 600.0, "s": "grobnica-ostavalas-zapechatannoy-600-let-krasnyy-cherep-stal"}, {"u": "attm2jQE0jD_DDyU", "t": "Озеро хранило их почти 2000 лет: плавучие дворцы Калигулы подняли со дна – и потеряли снова", "c": "sea", "a": 2000.0, "s": "ozero-hranilo-ih-pochti-2000-let-plavuchie-dvorcy-kaliguly"}, {"u": "atry5JXnO2bSZgcP", "t": "Почти 4000 лет под землёй: возле Луксора нашли 11 погребений и украшения, пережившие своих владельцев", "c": "egypt", "a": 4000.0, "s": "pochti-4000-let-pod-zemley-vozle-luksora-nashli-11-pogrebeniy-i"}, {"u": "atpEmjQE0jD_WvZJ", "t": "Под египетским храмом нашли тоннель длиной 1300 метров. Почему его связывают с тайной Клеопатры", "c": "egypt", "a": null, "s": "pod-egipetskim-hramom-nashli-tonnel-dlinoy-1300-metrov-pochemu"}, {"u": "atn65pFVSyRnD35E", "t": "2600 лет за каменной дверью: археологи открыли гробницу, до которой не добрались грабители", "c": "arch", "a": 2600.0, "s": "2600-let-za-kamennoy-dveryu-arheologi-otkryli-grobnicu-do"}, {"u": "atnNc6ca6RJHfRrN", "t": "Леонардо оставил подсказку: под замком в Милане обнаружили скрытые подземные ходы", "c": "under", "a": null, "s": "leonardo-ostavil-podskazku-pod-zamkom-v-milane-obnaruzhili"}, {"u": "atnJiA4ez2MvATo3", "t": "Под лодками скрывается римский город: здесь рыбы плавают над полами роскошных вилл", "c": "under", "a": null, "s": "pod-lodkami-skryvaetsya-rimskiy-gorod-zdes-ryby-plavayut-nad"}, {"u": "atikiOYB8ynWAks2", "t": "2000 лет под пеплом: в Помпеях нашли дом с собственным спа для десятков гостей", "c": "arch", "a": 2000.0, "s": "2000-let-pod-peplom-v-pompeyah-nashli-dom-s-sobstvennym-spa"}, {"u": "ath1S7wGIXQNrUyI", "t": "Вечер воскресенья, а вы уже устали. Почему выходные иногда выматывают сильнее работы", "c": "misc", "a": null, "s": "vecher-voskresenya-a-vy-uzhe-ustali-pochemu-vyhodnye-inogda"}, {"u": "atdNsWDX1lL67VCc", "t": "Под римской церковью нашли другую церковь. А ещё глубже – улицу и храм древнего бога", "c": "under", "a": null, "s": "pod-rimskoy-cerkovyu-nashli-druguyu-cerkov-a-esche-glubzhe"}, {"u": "atZnyH-lyTIvuAG3", "t": "Письму почти 2000 лет. В нём не тайна империи, а приглашение на день рождения", "c": "arch", "a": 2000.0, "s": "pismu-pochti-2000-let-v-nem-ne-tayna-imperii-a-priglashenie-na"}, {"u": "atZrF_1TDxoDCAvH", "t": "Квартиру не открывали десятилетиями. На стене ждал портрет за 2,1 миллиона евро", "c": "museum", "a": null, "s": "kvartiru-ne-otkryvali-desyatiletiyami-na-stene-zhdal-portret-za"}, {"u": "atXf3X5t1Ed_a0aK", "t": "Туристы нашли тело в Альпах. Через 10 лет внутри обнаружили наконечник стрелы", "c": "arch", "a": null, "s": "turisty-nashli-telo-v-alpah-cherez-10-let-vnutri-obnaruzhili"}, {"u": "atLkBV3QGn4D3G3N", "t": "Под Северным морем лежит земля, по которой ходили люди. Куда исчез Доггерленд?", "c": "under", "a": null, "s": "pod-severnym-morem-lezhit-zemlya-po-kotoroy-hodili-lyudi-kuda"}, {"u": "atR5gm5_mWPIBxfR", "t": "Дома остались, люди исчезли: загадка города, который вулкан похоронил задолго до Помпей", "c": "arch", "a": 1947, "s": "doma-ostalis-lyudi-ischezli-zagadka-goroda-kotoryy-vulkan"}, {"u": "atMZLUz4Fk2YQP0k", "t": "2000 лет под вулканом: археологи нашли кровати, двери и следы последних минут погибшего города", "c": "arch", "a": 2000.0, "s": "2000-let-pod-vulkanom-arheologi-nashli-krovati-dveri-i-sledy"}, {"u": "atMMWF3QGn4DByMY", "t": "Они построили город подо льдом и бросили его. Что осталось внутри спустя почти 60 лет", "c": "under", "a": null, "s": "oni-postroili-gorod-podo-ldom-i-brosili-ego-chto-ostalos-vnutri"}, {"u": "atMHJL4QihRSlksG", "t": "8 дней без солнца: что скрывает пещера в Абхазии глубиной больше двух километров", "c": "under", "a": null, "s": "8-dney-bez-solnca-chto-skryvaet-peschera-v-abhazii-glubinoy"}, {"u": "atLmbYn3yzaETY5X", "t": "Земля купцов, о которой почти забыли: как Согдиана соединяла чужие миры", "c": "history", "a": null, "s": "zemlya-kupcov-o-kotoroy-pochti-zabyli-kak-sogdiana-soedinyala"}, {"u": "atLlj42n7k2QfWe_", "t": "Они построили город на искусственных островах. Почему Нан-Мадол остался пустым?", "c": "arch", "a": null, "s": "oni-postroili-gorod-na-iskusstvennyh-ostrovah-pochemu-nan-madol"}, {"u": "asZV8UwDkhlokNca", "t": "Под Храмом Гроба Господня раскрыли древний Иерусалим – что нашли археологи", "c": "under", "a": null, "s": "pod-hramom-groba-gospodnya-raskryli-drevniy-ierusalim-chto"}, {"u": "atDLfjSVXl36kOF-", "t": "От Земли до края Вселенной: 20 снимков, от которых захватывает дух", "c": "space", "a": null, "s": "ot-zemli-do-kraya-vselennoy-20-snimkov-ot-kotoryh-zahvatyvaet"}, {"u": "asflDowiwnKC5ARa", "t": "Эрмитаж, каким вы его не знали: 15 удивительных историй о сокровищах, тайнах и спасённых шедеврах", "c": "museum", "a": null, "s": "ermitazh-kakim-vy-ego-ne-znali-15-udivitelnyh-istoriy-o"}, {"u": "atBn04UktWiumprx", "t": "«Васа»: корабль, который затонул за минуты, а через 333 года стал сенсацией", "c": "sea", "a": 333.0, "s": "vasa-korabl-kotoryy-zatonul-za-minuty-a-cherez-333-goda-stal"}, {"u": "ast3VL9EDjlgxzR2", "t": "Джоконду украли из Лувра. Два года шедевр прятался в обычной комнате", "c": "museum", "a": null, "s": "dzhokondu-ukrali-iz-luvra-dva-goda-shedevr-pryatalsya-v"}, {"u": "aszbQySt_WXlvjoa", "t": "Последний день Помпей: что археологи обнаружили в городе, который исчез под пеплом", "c": "arch", "a": 1947, "s": "posledniy-den-pompey-chto-arheologi-obnaruzhili-v-gorode"}, {"u": "as7zDP1TDxoDYqoo", "t": "Они ушли искать морской путь и не вернулись: почему экспедицию Франклина не спасли даже лучшие корабли", "c": "sea", "a": null, "s": "oni-ushli-iskat-morskoy-put-i-ne-vernulis-pochemu-ekspediciyu"}, {"u": "as2uK7jXMVgljCJy", "t": "Музей Прадо: 9 картин, в которых спрятаны королевские тайны, страхи и целые миры", "c": "museum", "a": null, "s": "muzey-prado-9-kartin-v-kotoryh-spryatany-korolevskie-tayny"}, {"u": "asyrS0Z8ZShLmg_h", "t": "12 сокровищ Британского музея, за которыми скрываются невероятные истории", "c": "museum", "a": null, "s": "12-sokrovisch-britanskogo-muzeya-za-kotorymi-skryvayutsya"}, {"u": "asiEebk0XEpLGQFn", "t": "Из глубин космоса пришёл сигнал. Он летел к Земле почти 11 миллиардов лет", "c": "space", "a": 11000000000.0, "s": "iz-glubin-kosmosa-prishel-signal-on-letel-k-zemle-pochti-11"}, {"u": "ast583eRVSPG-SNd", "t": "Труп с секретными письмами обманул нацистов: операция 1943 года", "c": "history", "a": 83, "s": "trup-s-sekretnymi-pismami-obmanul-nacistov-operaciya-1943-goda"}, {"u": "ast5u9jdjCJTEMjw", "t": "Солнце вывело из строя телеграф: что произошло с Землёй в 1859 году", "c": "space", "a": 167, "s": "solnce-vyvelo-iz-stroya-telegraf-chto-proizoshlo-s-zemley-v"}, {"u": "asnat4ZFzXeQSTT8", "t": "В Китае нашли 8000 глиняных воинов. Почему гробницу императора до сих пор не открыли?", "c": "arch", "a": null, "s": "v-kitae-nashli-8000-glinyanyh-voinov-pochemu-grobnicu"}, {"u": "asnURcWsUymIAtAB", "t": "Викинги похоронили целый корабль. Через 1000 лет внутри нашли двух женщин", "c": "sea", "a": 1000.0, "s": "vikingi-pohoronili-celyy-korabl-cherez-1000-let-vnutri-nashli"}, {"u": "asjjFY-n_QxJg2j3", "t": "Тунгусский метеорит: взрыв, уничтоживший огромный участок тайги. Почему учёные не нашли кратер?", "c": "space", "a": null, "s": "tungusskiy-meteorit-vzryv-unichtozhivshiy-ogromnyy-uchastok"}, {"u": "asjeCcA1tTrcOcDT", "t": "2000 лет назад создали компьютер? Загадка механизма, найденного на дне моря", "c": "sea", "a": 2000.0, "s": "2000-let-nazad-sozdali-kompyuter-zagadka-mehanizma-naydennogo"}, {"u": "asjYCb9EDjlg7pav", "t": "17 гигантских голов Мексики: как древние люди перевозили камни весом в десятки тонн?", "c": "arch", "a": null, "s": "17-gigantskih-golov-meksiki-kak-drevnie-lyudi-perevozili-kamni"}, {"u": "aseOlFhyIit0mD_M", "t": "Хотел построить террасу – и нашёл 18,5 кг серебра викингов. Кто спрятал этот клад?", "c": "arch", "a": null, "s": "hotel-postroit-terrasu-i-nashel-18-5-kg-serebra-vikingov-kto"}, {"u": "aseV-lhyIit0yOoi", "t": "Лувр ограбили за семь минут: корону нашли на земле, а драгоценности на 88 миллионов евро исчезли", "c": "museum", "a": null, "s": "luvr-ograbili-za-sem-minut-koronu-nashli-na-zemle-a"}, {"u": "asfYe7kgYSo2d9Mk", "t": "Большой Египетский музей: 15 удивительных историй, которые скрывают сокровища фараонов", "c": "museum", "a": null, "s": "bolshoy-egipetskiy-muzey-15-udivitelnyh-istoriy-kotorye"}, {"u": "asdxc6g6UjmzML7q", "t": "В поле нашли загадочный предмет с 12 гранями – зачем он был нужен римлянам?", "c": "arch", "a": null, "s": "v-pole-nashli-zagadochnyy-predmet-s-12-granyami-zachem-on-byl"}, {"u": "asds90wDkhlo_ZtR", "t": "217 лет никто не мог прочитать секретное письмо 1809 года – ИИ раскрыл его содержание", "c": "history", "a": 217, "s": "217-let-nikto-ne-mog-prochitat-sekretnoe-pismo-1809-goda-ii"}, {"u": "asdhPlafAhIiCjV-", "t": "В Норвегии растаял древний лёд – из-под него появились стрелы возрастом до 6000 лет", "c": "arch", "a": 6000.0, "s": "v-norvegii-rastayal-drevniy-led-iz-pod-nego-poyavilis-strely"}, {"u": "asdYAWd3YgSRJ_W2", "t": "Астронавты увидели пять вспышек на Луне – NASA объяснило их происхождение", "c": "space", "a": null, "s": "astronavty-uvideli-pyat-vspyshek-na-lune-nasa-obyasnilo-ih"}, {"u": "asdED6g6Ujmz237Q", "t": "В Турции нашли крепость размером с 17 футбольных полей – это может быть потерянная столица Урарту", "c": "arch", "a": null, "s": "v-turcii-nashli-krepost-razmerom-s-17-futbolnyh-poley-eto"}, {"u": "asc-pIwiwnKCrepZ", "t": "На дне моря нашли перстень с изображением исчезнувшего чуда света", "c": "sea", "a": null, "s": "na-dne-morya-nashli-persten-s-izobrazheniem-ischeznuvshego"}, {"u": "asacTKg6UjmzMov5", "t": "Высота 611: в СССР видели падение светящегося шара – а на сопке нашли странные образцы", "c": "mystery", "a": null, "s": "vysota-611-v-sssr-videli-padenie-svetyaschegosya-shara-a-na"}, {"u": "asaSWD8fICTsWsk1", "t": "Воронеж, 1989: дети рассказали о посадке НЛО – история, о которой узнал весь мир", "c": "mystery", "a": 37, "s": "voronezh-1989-deti-rasskazali-o-posadke-nlo-istoriya-o-kotoroy"}, {"u": "asaUTB1KWEPlZD89", "t": "Под Воронежем искали НЛО – а заявили, что сфотографировали прошлое", "c": "mystery", "a": null, "s": "pod-voronezhem-iskali-nlo-a-zayavili-chto-sfotografirovali"}, {"u": "asZOI4wiwnKCfQTx", "t": "В Софийский собор вернули фреску из 500 фрагментов – её собирали из строительного мусора", "c": "arch", "a": null, "s": "v-sofiyskiy-sobor-vernuli-fresku-iz-500-fragmentov-ee-sobirali"}, {"u": "asY7tAso8RQbU8eq", "t": "В Новгороде нашли гробницу святой Харитины – что известно о находке под храмом XII века", "c": "arch", "a": 900, "s": "v-novgorode-nashli-grobnicu-svyatoy-haritiny-chto-izvestno-o"}, {"u": "asY4zPM0xjO0PkjO", "t": "В Турции нашли христианский амулет с золотым листом – его тайну ещё не раскрыли", "c": "arch", "a": null, "s": "v-turcii-nashli-hristianskiy-amulet-s-zolotym-listom-ego-taynu"}, {"u": "asY1TUwDkhloUVA5", "t": "В немецком лесу нашли храм Марса – он лежал всего в нескольких сантиметрах под землёй", "c": "arch", "a": null, "s": "v-nemeckom-lesu-nashli-hram-marsa-on-lezhal-vsego-v-neskolkih"}, {"u": "asYq-lX6rneQfx7i", "t": "Под Святой Софией нашли подземный мир – тоннели могут тянуться на 9 километров", "c": "under", "a": null, "s": "pod-svyatoy-sofiey-nashli-podzemnyy-mir-tonneli-mogut-tyanutsya"}, {"u": "asYmOYJUdxLLUSoq", "t": "На Луне появился новый кратер размером с два футбольных поля – его нашли только спустя год", "c": "space", "a": null, "s": "na-lune-poyavilsya-novyy-krater-razmerom-s-dva-futbolnyh-polya"}, {"u": "asYdcFhyIit0oLdB", "t": "За гробницей Тутанхамона снова нашли признаки скрытых комнат – что может быть внутри", "c": "egypt", "a": null, "s": "za-grobnicey-tutanhamona-snova-nashli-priznaki-skrytyh-komnat"}, {"u": "asYYGzZaHEHXvpKL", "t": "Почему дома пахнет «старостью», даже если всё чисто – 6 мест, которые обычно забывают", "c": "misc", "a": null, "s": "pochemu-doma-pahnet-starostyu-dazhe-esli-vse-chisto-6-mest"}, {"u": "asYTwKg6UjmzPr__", "t": "Рыбка, которая дышит воздухом и строит гнездо из пузырей: чем удивляет петушок", "c": "misc", "a": null, "s": "rybka-kotoraya-dyshit-vozduhom-i-stroit-gnezdo-iz-puzyrey-chem"}, {"u": "asYKRkwDkhlo_hG1", "t": "Как оживить увядшую зелень за 15 минут – и хранить её свежей дольше", "c": "misc", "a": null, "s": "kak-ozhivit-uvyadshuyu-zelen-za-15-minut-i-hranit-ee-svezhey"}, {"u": "asYA4Wd3YgSRD7Fg", "t": "Дом, который, по рассказам посетителей, нападает на людей: загадка Sallie House", "c": "mystery", "a": null, "s": "dom-kotoryy-po-rasskazam-posetiteley-napadaet-na-lyudey-zagadka"}, {"u": "asW5ujw7qkg-eKJw", "t": "Почему гробница Тутанхамона пережила грабителей", "c": "egypt", "a": null, "s": "pochemu-grobnica-tutanhamona-perezhila-grabiteley"}, {"u": "asVeofTCPDt_bGUT", "t": "Рим пал не только из-за варваров", "c": "history", "a": null, "s": "rim-pal-ne-tolko-iz-za-varvarov"}, {"u": "asW8RYq_jR1SRxXd", "t": "Следы астронавтов на Луне могут прожить миллионы лет", "c": "space", "a": null, "s": "sledy-astronavtov-na-lune-mogut-prozhit-milliony-let"}, {"u": "asVCo8vU_1XjJN-M", "t": "Римский бетон умел лечить трещины", "c": "history", "a": null, "s": "rimskiy-beton-umel-lechit-treschiny"}, {"u": "asUhCvpWsHNebjoA", "t": "ДНК викингов разрушила старый миф", "c": "history", "a": null, "s": "dnk-vikingov-razrushila-staryy-mif"}, {"u": "asUrUlOkzErdO20L", "t": "Наполеона победила не русская зима - что на самом деле уничтожило Великую армию", "c": "history", "a": null, "s": "napoleona-pobedila-ne-russkaya-zima-chto-na-samom-dele"}, {"u": "asUhHfpWsHNebmEM", "t": "Мир уже катился к войне - но почти никто не решился его остановить", "c": "history", "a": null, "s": "mir-uzhe-katilsya-k-voyne-no-pochti-nikto-ne-reshilsya-ego"}];
+const Q = [{"u": "atBn04UktWiumprx", "q": "Боевой корабль затонул в первом же плавании, прямо в гавани, на глазах у толпы. Его подняли со дна почти целым.", "a": 400, "x": "Шведский корабль «Васа» затонул в 1628 году. Подняли его в 1961-м, сейчас он стоит в музее в Стокгольме."}, {"u": "asnURcWsUymIAtAB", "q": "Две женщины похоронены в настоящем деревянном корабле с резным носом, вместе с санями, повозкой и лошадьми.", "a": 1200, "x": "Усебергский корабль: погребение викингов 834 года в Норвегии."}, {"u": "aszbQySt_WXlvjoa", "q": "Буханку хлеба с надрезами на дольки так и не успели съесть: город засыпало вулканическим пеплом.", "a": 1950, "x": "Помпеи погибли при извержении Везувия в 79 году нашей эры."}, {"u": "asjeCcA1tTrcOcDT", "q": "Позеленевшие куски бронзы со дна моря оказались механизмом из десятков шестерёнок, который считал затмения.", "a": 2100, "x": "Антикитерский механизм, Древняя Греция, примерно II век до нашей эры."}, {"u": "aud11npCwlRQmxyY", "q": "Человека нашли в торфяном болоте с верёвкой на шее. Полиция сначала решила, что это недавнее убийство.", "a": 2400, "x": "Человек из Толлунда, Дания. Болото сохранило даже щетину на его лице."}, {"u": "atzgBOF9tlMzIfQ6", "q": "Глиняная табличка: покупатель возмущается, что ему продали плохую медь, и требует вернуть деньги.", "a": 3750, "x": "Жалоба Нанни на купца Эа-насира, Ур, около 1750 года до нашей эры. Одна из старейших известных жалоб."}, {"u": "at20xWOyflHhKGVQ", "q": "Льняное платье с рукавами и складками много лет пролежало в музее, пока его не изучили как следует.", "a": 5000, "x": "Платье из Тархана, Египет. Его возраст оценивают в 5100–5500 лет, оно старше пирамид."}, {"u": "auASxZXnO2bSkWhr", "q": "Скелет девушки водолазы нашли на дне огромной затопленной пещеры, рядом с костями саблезубой кошки.", "a": 13000, "x": "Найя из пещеры Ойо-Негро в Мексике, конец ледникового периода."}, {"u": "aucfKPPXA2RbG97b", "q": "Двух детей похоронили голова к голове, их одежду украшали тысячи бусин из бивня мамонта.", "a": 34000, "x": "Стоянка Сунгирь под Владимиром, верхний палеолит."}, {"u": "auMHgyuAv38Gz2Wy", "q": "Скелет древнего человека так долго пролежал в пещере, что сросся с известняковыми наростами.", "a": 130000, "x": "Альтамурский человек, Италия. Неандерталец, возраст около 130–170 тысяч лет."}];
+const LB = {};
+</script>
+<script>
+(function(){
+var root=document.documentElement,LS={g:function(k){try{return localStorage.getItem(k)}catch(e){return null}},s:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function goal(n){try{ym(114022016,"reachGoal",n)}catch(e){}}
+function th(){document.querySelectorAll("button[data-th]").forEach(function(b){b.textContent=root.dataset.theme==="light"?"☾":"☀"})}
+document.querySelectorAll("button[data-th]").forEach(function(b){b.addEventListener("click",function(){var t=root.dataset.theme==="light"?"dark":"light";root.dataset.theme=t;LS.s("nvp_theme",t);th()})});th();
+function fs(){document.querySelectorAll("button[data-fs]").forEach(function(b){b.textContent=["Aa","Aa+","Aa++"][+(root.dataset.fs||0)]})}
+document.querySelectorAll("button[data-fs]").forEach(function(b){b.addEventListener("click",function(){var f=(+(root.dataset.fs||0)+1)%3;root.dataset.fs=f;LS.s("nvp_fs",f);fs()})});fs();
+
+var CAT={arch:"Археология",under:"Подземелья",egypt:"Египет",sea:"Море и корабли",history:"История",museum:"Музеи",space:"Космос",mystery:"Загадки",misc:"Разное"};
+var LAYERS=[["Дёрн","0 м"],["Средневековье","1 м"],["Античность","2 м"],["Бронзовый век","3 м"],["Каменный век","5 м"],["Ледниковый период","8 м"]];
+var PER=5;
+var el=document.getElementById("ig"),lbEl=document.getElementById("lb");
+var S;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function pick(a,n,not){return shuffle(a.filter(function(x){return not.indexOf(x)<0})).slice(0,n)}
+function img(u){return "/images/"+u+".webp"}
+function link(x){return x.s?"/st/"+x.s+"/":"https://dzen.ru/a/"+x.u}
+function fmtAge(y){if(y>=1e9)return(Math.round(y/1e8)/10+"").replace(".",",")+" млрд лет";if(y>=1e6)return Math.round(y/1e6)+" млн лет";if(y>=1e4)return Math.round(y/1e3)+" тыс. лет";if(y>=1000){var k=Math.round(y/100)/10;return (k+"").replace(".",",")+" тыс. лет"}var n=Math.round(y);var m10=n%10,m100=n%100;var w=(m10==1&&m100!=11)?"год":(m10>=2&&m10<=4&&(m100<10||m100>=20))?"года":"лет";return n+" "+w}
+function nice(y){if(y<100)return Math.max(5,Math.round(y/5)*5);if(y<1000)return Math.round(y/50)*50;if(y<10000)return Math.round(y/500)*500;if(y<1e5)return Math.round(y/5000)*5000;if(y<1e6)return Math.round(y/5e4)*5e4;return Math.round(y/Math.pow(10,Math.floor(Math.log10(y))-1))*Math.pow(10,Math.floor(Math.log10(y))-1)}
+function ageOpts(a){var f=shuffle([[0.1,0.3,3],[0.3,3,10],[0.25,0.5,4],[0.2,2,6],[0.4,2.5,8]])[0];var out=[a];f.forEach(function(k){var v=nice(a*k);if(out.every(function(o){return fmtAge(o)!==fmtAge(v)}))out.push(v)});var k=12;while(out.length<4){var v=nice(a*k);if(out.every(function(o){return fmtAge(o)!==fmtAge(v)}))out.push(v);k*=3}return shuffle(out)}
+function mask(t){return t.replace(/\d[\d\s.,]*\d|\d/g,"■■")}
+var AGE=Q.map(function(q){var x=A.filter(function(a){return a.u===q.u})[0]||{};return{u:q.u,q:q.q,a:q.a,s:x.s||"",t:x.t||q.q}}).concat(A.filter(function(a){return a.a&&a.a>=30&&!Q.some(function(q){return q.u===a.u})}).map(function(a){return{u:a.u,q:mask(a.t),a:a.a,s:a.s,t:a.t}}));
+
+function layer(){return Math.min(LAYERS.length-1,Math.floor(S.right/PER))}
+function limit(){return Math.max(8,16-layer()*1.6)}
+function mult(){return S.streak>=8?3:S.streak>=4?2:1}
+
+function newGame(){S={score:0,right:0,lives:3,streak:0,used:[],miss:[],qn:0,best:+(LS.g("ig_best")||0)};goal("igra_start");next()}
+function next(){
+  if(S.lives<=0)return end();
+  S.qn++;
+  var useAge=(S.qn%3===0)&&AGE.length,item,q,opts,correct,kind;
+  if(useAge){var pool=AGE.filter(function(x){return S.used.indexOf(x.u)<0});if(!pool.length)pool=AGE;item=pool[Math.floor(Math.random()*pool.length)];kind="age";q="Сколько лет этой находке?";var ao=ageOpts(item.a);opts=ao.map(fmtAge);correct=fmtAge(item.a)}
+  else{var lay=layer();var pool2=A.filter(function(x){return S.used.indexOf(x.u)<0});if(pool2.length<4)pool2=A;item=pool2[Math.floor(Math.random()*pool2.length)];kind="photo";q="Из какой истории эта находка?";
+    var same=A.filter(function(x){return x.c===item.c&&x.u!==item.u});var others=A.filter(function(x){return x.u!==item.u});
+    var src=(lay>=2&&same.length>=3)?same:others;var d=pick(src,3,[]);opts=shuffle([item].concat(d)).map(function(x){return x.t});correct=item.t}
+  S.used.push(item.u);S.cur={item:item,kind:kind,correct:correct};
+  var L=LAYERS[layer()],strata="";for(var i=0;i<LAYERS.length;i++)strata+='<i class="'+(i<=layer()?"on":"")+'"></i>';
+  var hearts="";for(var h=0;h<3;h++)hearts+='<span class="'+(h<S.lives?"":"off")+'">🏺</span>';
+  el.innerHTML='<div class="ig-hud"><div class="ig-score"><small>Очки</small><span id="sc">'+S.score.toLocaleString("ru")+'</span></div><span class="ig-mult'+(mult()>1?" on":"")+'" title="Множитель за серию">×'+mult()+'</span><span class="ig-lives" aria-label="Жизни: '+S.lives+'">'+hearts+'</span></div>'+
+  '<div class="ig-depth"><span>Глубина '+L[1]+' · <b>'+L[0]+'</b></span><span class="ig-strata" aria-hidden="true">'+strata+'</span></div>'+
+  '<div class="ig-timer" id="tm"><i id="tmi"></i></div>'+
+  '<div class="ig-img"><img src="'+img(item.u)+'" alt=""><span class="tag">'+esc(kind==="age"?"Возраст":CAT[item.c]||"Находка")+'</span><span class="ig-pts" id="pts"></span></div>'+
+  '<div class="ig-body"><p class="ig-q">'+esc(q)+(kind==="age"?'<br><span style="color:var(--muted);font-weight:400;font-size:16px">'+esc(item.q)+'</span>':'')+'</p><div class="ig-opts'+(kind==="age"?" two":"")+'" id="op"></div></div>';
+  var op=document.getElementById("op");
+  opts.forEach(function(o){var b=document.createElement("button");b.type="button";b.className="ig-opt"+(kind==="age"?" big":"");b.textContent=o;b.addEventListener("click",function(){answer(o,b)});op.appendChild(b)});
+  var n=new Image();var nx=A[Math.floor(Math.random()*A.length)];n.src=img(nx.u);
+  var r=el.getBoundingClientRect();if(r.top<0||r.top>innerHeight*.4)scrollTo({top:scrollY+r.top-8,behavior:S.qn===1?"smooth":"auto"});
+  S.t0=performance.now();S.lim=limit()*1000;clearInterval(S.iv);S.iv=setInterval(tick,100);
+}
+function tick(){var left=1-(performance.now()-S.t0)/S.lim;var i=document.getElementById("tmi");if(!i)return;i.style.transform="scaleX("+Math.max(0,left)+")";document.getElementById("tm").classList.toggle("low",left<.3);if(left<=0){answer(null,null)}}
+function answer(o,btn){
+  if(S.cur.done)return;S.cur.done=true;clearInterval(S.iv);
+  var ok=o===S.cur.correct,btns=document.querySelectorAll(".ig-opt");
+  btns.forEach(function(b){b.disabled=true;if(b.textContent===S.cur.correct)b.classList.add("ok")});
+  if(ok){var left=Math.max(0,1-(performance.now()-S.t0)/S.lim);S.streak++;var pts=Math.round((100+left*100)*mult()*(1+layer()*.25));S.score+=pts;S.right++;var p=document.getElementById("pts");p.textContent="+"+pts;p.classList.add("fly");document.getElementById("sc").textContent=S.score.toLocaleString("ru")}
+  else{if(btn)btn.classList.add("bad");S.streak=0;S.lives--;S.miss.push(S.cur.item)}
+  setTimeout(next,ok?900:1700);
+}
+function end(){
+  goal("igra_done");var r0=el.getBoundingClientRect();if(r0.top<0)scrollTo({top:scrollY+r0.top-8});
+  var L=LAYERS[layer()],newBest=S.score>S.best;if(newBest)LS.s("ig_best",S.score);
+  var hist=[];try{hist=JSON.parse(LS.g("ig_hist")||"[]")}catch(e){}
+  hist.push({s:S.score,d:L[0],t:Date.now()});hist.sort(function(a,b){return b.s-a.s});LS.s("ig_hist",JSON.stringify(hist.slice(0,10)));
+  var miss=S.miss.filter(function(x,i,a){return a.indexOf(x)===i}).slice(0,3);
+  var url="https://nevsetakprosto.ru/igra/",txt="Я набрал "+S.score+" очков в игре «Археолог» и докопался до слоя «"+L[0]+"». Сможете глубже?";
+  el.innerHTML='<div class="ig-end"><span class="kicker">Раскопки окончены</span><div class="ig-final">'+S.score.toLocaleString("ru")+'</div>'+
+  '<p class="ig-sub">Вы докопались до слоя <b>«'+esc(L[0])+'»</b> ('+L[1]+') и узнали '+S.right+' '+(S.right%10==1&&S.right%100!=11?"находку":(S.right%10>=2&&S.right%10<=4&&(S.right%100<10||S.right%100>=20))?"находки":"находок")+'.</p>'+
+  (newBest&&S.score>0?'<span class="ig-best">Новый личный рекорд!</span>':(S.best?'<span class="ig-best" style="opacity:.75">Ваш рекорд: '+S.best.toLocaleString("ru")+'</span>':''))+
+  (LB.url&&S.score>0?'<form class="ig-name" id="nf"><input id="nm" maxlength="20" placeholder="Ваше имя для таблицы" autocomplete="nickname" value="'+esc(LS.g("ig_name")||"")+'" required><button class="ig-go" type="submit">В таблицу</button></form><p class="ig-msg" id="msg"></p>':'')+
+  '<div class="ig-btns"><button class="ig-go" type="button" id="again">Копать ещё раз</button><a class="ig-go ghost" style="text-decoration:none;display:block" href="/test/">Пройти тест на возраст</a></div>'+
+  '<div class="ig-share"><a href="https://vk.com/share.php?url='+encodeURIComponent(url)+'&title='+encodeURIComponent(txt)+'" target="_blank" rel="noopener" data-sh="vk">Поделиться ВКонтакте</a><a href="https://connect.ok.ru/offer?url='+encodeURIComponent(url)+'&title='+encodeURIComponent(txt)+'" target="_blank" rel="noopener" data-sh="ok">Одноклассники</a><a href="https://t.me/share/url?url='+encodeURIComponent(url)+'&text='+encodeURIComponent(txt)+'" target="_blank" rel="noopener" data-sh="tg">Telegram</a></div>'+
+  (miss.length?'<div class="ig-miss"><h3>Эти находки вас подвели</h3>'+miss.map(function(x){return'<a class="ig-mini" href="'+link(x)+'"><img src="'+img(x.u)+'" alt="" loading="lazy"><span>'+esc(x.t)+'</span></a>'}).join("")+'</div>':'')+
+  '</div>';
+  document.getElementById("again").addEventListener("click",newGame);
+  document.querySelectorAll("[data-sh]").forEach(function(a){a.addEventListener("click",function(){goal("igra_share_"+a.dataset.sh)})});
+  var f=document.getElementById("nf");if(f)f.addEventListener("submit",function(e){e.preventDefault();var n=document.getElementById("nm").value.trim();if(!n)return;if(BAD.test(n.toLowerCase())){document.getElementById("msg").textContent="Выберите другое имя.";return}LS.s("ig_name",n);send(n,S.score,L[0])});
+  board();
+}
+var BAD=/(хуй|хуе|хуё|пизд|ебa|еба|ёба|ебл|ебу|бля|сука|суки|мудак|пидор|пидар|залуп|гандон|шлюх|fuck|shit|dick|cunt)/;
+function send(n,s,d){var m=document.getElementById("msg"),b=document.querySelector("#nf button");b.disabled=true;m.textContent="Записываем…";
+  fetch(LB.url+"/rest/v1/scores",{method:"POST",headers:{"apikey":LB.key,"Authorization":"Bearer "+LB.key,"Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({name:n.slice(0,20),score:s,depth:d})})
+  .then(function(r){if(!r.ok)throw 0;m.textContent="Готово! Вы в таблице.";goal("igra_lb");document.getElementById("nf").remove();S.sent=n;board()}).catch(function(){m.textContent="Не получилось записать. Попробуйте ещё раз.";b.disabled=false})}
+var TAB=LS.g("ig_tab")||"week";
+function monday(){var d=new Date();var k=(d.getDay()+6)%7;d.setHours(0,0,0,0);d.setDate(d.getDate()-k);return d.toISOString()}
+function board(){
+  var head='<h2>Лучшие археологи</h2><div class="lb-tabs" role="group" aria-label="Период">'+(LB.url?'<button type="button" data-t="week" aria-pressed="'+(TAB==="week")+'">Эта неделя</button><button type="button" data-t="all" aria-pressed="'+(TAB==="all")+'">За всё время</button>':"")+'<button type="button" data-t="me" aria-pressed="'+(TAB==="me"||!LB.url)+'">Мои рекорды</button></div><div id="lbt"></div>';
+  lbEl.innerHTML=head;
+  lbEl.querySelectorAll("[data-t]").forEach(function(b){b.addEventListener("click",function(){TAB=b.dataset.t;LS.s("ig_tab",TAB);board()})});
+  var t=document.getElementById("lbt");
+  if(TAB==="me"||!LB.url){var h=[];try{h=JSON.parse(LS.g("ig_hist")||"[]")}catch(e){}
+    t.innerHTML=h.length?table(h.map(function(x){return{name:new Date(x.t).toLocaleDateString("ru",{day:"numeric",month:"long"}),score:x.s,depth:x.d}}),null):'<p class="lb-empty">Здесь появятся ваши результаты. Сыграйте первую партию!</p>';return}
+  t.innerHTML='<p class="lb-empty">Загружаем таблицу…</p>';
+  var q=LB.url+"/rest/v1/scores?select=name,score,depth&order=score.desc&limit=10"+(TAB==="week"?"&created_at=gte."+encodeURIComponent(monday()):"");
+  fetch(q,{headers:{"apikey":LB.key,"Authorization":"Bearer "+LB.key}}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){t.innerHTML=rows.length?table(rows,S&&S.sent):'<p class="lb-empty">На этой неделе ещё никто не копал. Станьте первым!</p>'}).catch(function(){t.innerHTML='<p class="lb-empty">Таблица временно недоступна.</p>'})}
+function table(rows,me){return'<table class="lb-t"><tbody>'+rows.map(function(r,i){return'<tr'+(me&&r.name===me?' class="me"':'')+'><td class="n">'+(i+1)+'</td><td>'+esc(r.name)+'</td><td class="d">'+esc(r.depth||"")+'</td><td class="s">'+(+r.score).toLocaleString("ru")+'</td></tr>'}).join("")+'</tbody></table>'}
+
+function start(){var best=+(LS.g("ig_best")||0);
+  el.innerHTML='<div class="ig-start"><ul class="ig-rules">'+
+  '<li><span class="i">🔎</span><span>Узнайте находку по фото или угадайте её возраст. <b>Чем быстрее ответ, тем больше очков.</b></span></li>'+
+  '<li><span class="i">⛏️</span><span>Каждые '+PER+' верных ответов вы спускаетесь на слой глубже. <b>Там находки древнее, а очков больше.</b></span></li>'+
+  '<li><span class="i">🔥</span><span>Серия верных ответов умножает очки: <b>×2, потом ×3</b>.</span></li>'+
+  '<li><span class="i">🏺</span><span>У вас <b>3 жизни</b>. Ошибка или пропущенное время забирает одну.</span></li></ul>'+
+  (best?'<span class="ig-best">Ваш рекорд: '+best.toLocaleString("ru")+'</span>':'')+
+  '<button class="ig-go" type="button" id="go">Начать раскопки</button></div>';
+  document.getElementById("go").addEventListener("click",newGame);board()}
+start();
+if("serviceWorker"in navigator)addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});
+})();
+</script>
+</body>
+</html>
