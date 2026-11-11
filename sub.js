@@ -113,6 +113,6 @@
     setTimeout(fire, ART ? 45000 : 60000);
   }
 
-  function init(){ box(); arm(); }
+  function init(){ box(); } // всплывающее окно отключено по просьбе владельца
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
