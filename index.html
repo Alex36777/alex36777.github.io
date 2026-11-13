@@ -391,11 +391,41 @@ html{scroll-padding-top:70px}
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/114022016" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter --><!--/metrika-->
+<style id="home-css">
+body,:root[data-theme="light"] body{background:var(--bg)!important}
+.ix-strata,.ix-tl,.ix-wx,.ix-game,.ix-tm,section[aria-label="Игра"],section[aria-label="Тест"]{display:none!important}
+.card .band svg,.card .ex{display:none!important}
+.card{grid-template-rows:180px auto auto 1fr!important;border-radius:14px!important}
+.card h3{font-size:17px!important;line-height:1.35!important}
+.card .go{color:var(--lamp)}
+.shelf{padding-block:34px 4px}
+.shelf .sh-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;border-top:1px solid var(--line);padding-top:18px}
+.shelf h2{font:400 clamp(22px,3.6vw,28px)/1.15 var(--f-display);margin:0}
+.shelf .sh-head a{color:var(--lamp);text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}
+.sh-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:980px){.sh-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sh-c{display:grid;gap:10px;align-content:start;text-decoration:none;color:var(--ink);min-width:0}
+.sh-c .ph{aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:var(--soil)}
+.sh-c img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.sh-c:hover img{transform:scale(1.04)}
+.sh-t{display:grid;gap:6px}.sh-c b{font:600 16px/1.35 var(--f-body)}
+.sh-c:hover b{color:var(--lamp)}
+.sh-k{font:600 11.5px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--lamp)}
+@media (max-width:520px){.sh-c:nth-child(4){display:none}.sh-grid{grid-template-columns:1fr;gap:12px}.sh-c{grid-template-columns:118px 1fr;align-items:center}.sh-c .ph{aspect-ratio:4/3}.sh-c b{font-size:15px}.sh-c .sh-t{display:grid;gap:6px}}
+.ix-more{padding-block:14px 0}
+.ix-row{display:grid;gap:12px}
+.ix-row h2{font:600 13px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+.ix-cs{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.ix-c{flex:0 0 auto;display:grid;gap:3px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:var(--ink);max-width:250px}
+.ix-c b{font-weight:600;font-size:15px}.ix-c span{color:var(--muted);font-size:13px;line-height:1.35}
+.ix-c:hover{border-color:var(--lamp)}
+.hero-grid .nw-head h2{font-size:28px}
+</style>
 </head>
 <body>
 <div class="bar" id="bar" aria-hidden="true"><div class="wrap bar-in">
   <a class="bar-brand" href="#" data-top><img src="images/logo-128.jpg" alt=""><span>Не все <b>так просто!</b></span></a>
-  <nav class="bar-links" aria-label="Разделы"><a href="#h-map">Карта</a><a href="#h-tl">Эпохи</a><a href="#h-wx">Космос</a><a href="#h-tm">Игры</a><a href="/news/">Новости</a><a href="/test/">Тест</a><a href="/igra/">Игра</a><a href="#h-all" id="bar-all">Статьи</a><a href="#h-fav" id="bar-fav" hidden>Мои ★</a></nav>
+  <nav class="bar-links" aria-label="Разделы"><a href="#h-map">Карта</a><a href="/interaktiv/#h-tl">Эпохи</a><a href="/interaktiv/#h-wx">Космос</a><a href="/interaktiv/#h-tm">Игры</a><a href="/news/">Новости</a><a href="/test/">Тест</a><a href="/igra/">Игра</a><a href="#h-all" id="bar-all">Статьи</a><a href="#h-fav" id="bar-fav" hidden>Мои ★</a></nav>
   <div class="bar-tools"><button class="tbtn" type="button" data-fs aria-label="Размер шрифта">Aa</button><button class="tbtn" type="button" data-th aria-label="Светлая или тёмная тема">☀</button><a class="bar-vk" href="https://vk.com/club242138041" target="_blank" rel="noopener" aria-label="Группа ВКонтакте"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12.8 17.3c-5.5 0-8.6-3.8-8.8-10h2.8c.1 4.6 2.1 6.5 3.7 6.9V7.3h2.6v3.9c1.6-.2 3.3-2 3.8-3.9h2.6c-.4 2.4-2.2 4.2-3.4 4.9 1.2.6 3.2 2.1 3.9 4.9h-2.9c-.6-1.9-2.1-3.3-4-3.5v3.5h-.3z"/></svg></a><a class="bar-dz" href="https://dzen.ru/id/6ac51b68ff198c5f7a5f1dab" target="_blank" rel="noopener">Дзен</a></div>
 </div></div>
 <button class="totop" id="totop" type="button" aria-label="Наверх" hidden>↑</button>
@@ -520,7 +550,7 @@ show();})();</script><!--/news--></div>
   <div class="top3" id="top"></div>
 </section>
 
-<section class="wrap" aria-labelledby="h-map">
+<section class="wrap ix-map" aria-labelledby="h-map">
   <div class="sec-head">
     <h2 id="h-map">Карта находок</h2>
     <p>Где это нашли. Нажмите на золотую точку, чтобы увидеть находку.</p>
@@ -528,7 +558,7 @@ show();})();</script><!--/news--></div>
   <div class="map" id="map"><div class="map-ui"><div class="map-reg" role="group" aria-label="Регион"><button type="button" data-r="world" aria-pressed="true">Весь мир</button><button type="button" data-r="eu" aria-pressed="false">Европа</button><button type="button" data-r="med" aria-pressed="false">Средиземноморье</button><button type="button" data-r="egypt" aria-pressed="false">Египет и Ближний Восток</button><button type="button" data-r="am" aria-pressed="false">Америка</button><button type="button" data-r="ru" aria-pressed="false">Россия</button></div><div class="map-zoom"><button type="button" data-z="in" aria-label="Приблизить">+</button><button type="button" data-z="out" aria-label="Отдалить">−</button></div></div><p class="map-hint" id="map-hint" hidden>Чтобы приблизить, крутите колесо с зажатым Ctrl</p><svg id="map-svg" role="group" aria-label="Карта мира с местами находок"></svg><div class="map-pop" id="map-pop" hidden></div><p class="map-note" id="map-note"></p></div>
 </section>
 
-<section class="wrap" aria-labelledby="h-strata">
+<section class="wrap ix-strata" aria-labelledby="h-strata">
   <div class="sec-head">
     <h2 id="h-strata">Глубина времени</h2>
     <p>Статьи разложены по слоям, как в археологическом разрезе: чем ниже, тем древнее находка.</p>
@@ -536,7 +566,7 @@ show();})();</script><!--/news--></div>
   <div class="column" id="strata"></div>
 </section>
 
-<section class="wrap" aria-labelledby="h-tl">
+<section class="wrap ix-tl" aria-labelledby="h-tl">
   <div class="sec-head">
     <h2 id="h-tl">Машина времени</h2>
     <p>Листайте вправо — от ледникового периода к нашим дням. Каждая карточка стоит на своём месте шкалы.</p>
@@ -547,7 +577,7 @@ show();})();</script><!--/news--></div>
   </div>
 </section>
 
-<section class="wrap" aria-labelledby="h-wx">
+<section class="wrap ix-wx" aria-labelledby="h-wx">
   <div class="sec-head">
     <h2 id="h-wx">Погода в Солнечной системе</h2>
     <p>Прогноз на <span id="wx-date">сегодня</span>. Марс считаем вживую по формулам NASA, для остальных планет даём реальный климат и явление дня.</p>
@@ -557,7 +587,7 @@ show();})();</script><!--/news--></div>
   <p class="wx-note">Температуры — типичные значения по данным космических миссий. <a href="/r/space/">Статьи про космос →</a></p>
 </section>
 
-<section class="wrap" aria-labelledby="h-game">
+<section class="wrap ix-game" aria-labelledby="h-game">
   <div class="sec-head">
     <h2 id="h-game">Сколько лет находке?</h2>
     <p>Мини-игра: цифры в заголовке засекречены. Угадайте, в каком слое лежала находка.</p>
@@ -576,7 +606,7 @@ show();})();</script><!--/news--></div>
 <section class="wrap" aria-label="Игра"><a class="qz-promo" href="/igra/" data-ig-promo><span class="kicker">Новое · игра</span><b>Археолог: раскопки на рекорд</b><span>Копайте вглубь веков, узнавайте находки и попадите в таблицу лучших археологов недели.</span><span class="btn">Играть →</span></a></section>
 <section class="wrap" aria-label="Тест"><a class="qz-promo" href="/test/"><span class="kicker">Новое · тест</span><b>Сколько лет этой находке?</b><span>10 настоящих находок: от корабля викингов до неандертальца. Угадайте возраст и сравните результат с друзьями.</span><span class="btn">Пройти тест →</span></a></section>
 <style>.qz-promo{display:grid;gap:8px;padding:24px;border-radius:20px;text-decoration:none;color:var(--ink);background:linear-gradient(135deg,var(--card-hi),var(--card));border:1px solid var(--lamp)}.qz-promo b{font:400 clamp(24px,4vw,34px)/1.15 var(--f-display)}.qz-promo>span:not(.btn):not(.kicker){color:var(--muted)}.qz-promo .btn{justify-self:start;margin-top:6px}</style>
-<section class="wrap" aria-labelledby="h-tm">
+<section class="wrap ix-tm" aria-labelledby="h-tm">
   <div class="sec-head">
     <h2 id="h-tm">Правда или миф?</h2>
     <p>Десять заголовков из статей канала. В некоторых мы подменили одно число. Найдите подделки.</p>
@@ -592,6 +622,11 @@ show();})();</script><!--/news--></div>
   </div>
 </section>
 
+<!--home--><div class="home-blk"><section class="wrap ix-more" aria-labelledby="h-ix"><div class="ix-row"><h2 id="h-ix">Ещё интересное</h2><div class="ix-cs"><a class="ix-c" href="/interaktiv/#h-strata"><b>Глубина времени</b><span>Статьи по слоям: чем ниже, тем древнее.</span></a><a class="ix-c" href="/interaktiv/#h-tl"><b>Машина времени</b><span>От ледникового периода к нашим дням.</span></a><a class="ix-c" href="/interaktiv/#h-wx"><b>Погода на планетах</b><span>Прогноз на Марсе и других планетах.</span></a><a class="ix-c" href="/igra/"><b>Археолог</b><span>Раскопки на очки и таблица рекордов.</span></a><a class="ix-c" href="/test/"><b>Сколько лет находке?</b><span>10 настоящих находок. Угадайте возраст.</span></a><a class="ix-c" href="/interaktiv/#h-tm"><b>Правда или миф?</b><span>Найдите подменённые цифры в заголовках.</span></a><a class="ix-c" href="/interaktiv/#h-game"><b>Угадай слой</b><span>Цифры засекречены: в каком слое находка?</span></a></div></div></section>
+<section class="wrap shelf" aria-label="Египет"><div class="sh-head"><h2>Египет</h2><a href="/r/egypt/">Все 8 →</a></div><div class="sh-grid"><a class="sh-c" href="/st/more-poglotilo-egipetskiy-gorod-cherez-1200-let-ego-ulicy/"><span class="ph"><img src="/images/auouXbMiBBjTqGlZ.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Море поглотило египетский город. Через 1200 лет его улицы нашли под водой</b></span></a><a class="sh-c" href="/st/pod-dvorcom-v-egipte-nashli-12-chelovecheskih-ruk-vse-okazalis/"><span class="ph"><img src="/images/aucYaCuAv38GWARx.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Под дворцом в Египте нашли 12 человеческих рук. Все оказались правыми – и это не случайность</b></span></a><a class="sh-c" href="/st/v-egipetskoy-mumii-nashli-tekst-kogda-ego-prochitali-okazalos/"><span class="ph"><img src="/images/at25vpcSa1R38BDP.webp" alt="" loading="lazy"></span><span class="sh-t"><b>В египетской мумии нашли текст. Когда его прочитали, оказалось - это Гомер</b></span></a><a class="sh-c" href="/st/ego-nashli-v-egipetskoy-grobnice-i-64-goda-ne-zamechali-eto/"><span class="ph"><img src="/images/at20xWOyflHhKGVQ.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Его нашли в египетской гробнице и 64 года не замечали. Это платье оказалось старше пирамид</b></span></a></div></section>
+<section class="wrap shelf" aria-label="Море и корабли"><div class="sh-head"><h2>Море и корабли</h2><a href="/r/sea/">Все 10 →</a></div><div class="sh-grid"><a class="sh-c" href="/st/v-pompeyah-raskopali-drevnyuyu-zakusochnuyu-na-stoyke/"><span class="ph"><img src="/images/avaeJkaS2U7zTxED.webp" alt="" loading="lazy"></span><span class="sh-t"><b>В Помпеях раскопали древнюю закусочную. На стойке сохранились утки и морская нимфа</b></span></a><a class="sh-c" href="/st/na-glubine-kilometra-nashli-ozero-vnutri-morya-ego-voda/"><span class="ph"><img src="/images/aunM3Vy8oFW5S0hg.webp" alt="" loading="lazy"></span><span class="sh-t"><b>На глубине километра нашли озеро внутри моря. Его вода – ловушка для обитателей глубин</b></span></a><a class="sh-c" href="/st/so-dna-morya-podnyali-temnyy-oblomok-vnutri-okazalsya-mehanizm/"><span class="ph"><img src="/images/at5KBsuoJhnLzW0L.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Со дна моря подняли тёмный обломок. Внутри оказался механизм, который рассчитывал затмения</b></span></a><a class="sh-c" href="/st/korabl-ischez-a-gruz-ostalsya-u-beregov-turcii-nashli-sosudy/"><span class="ph"><img src="/images/auDzVvxZjwBICuuT.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Корабль исчез, а груз остался. У берегов Турции нашли сосуды, которым может быть 4700 лет</b></span></a></div></section>
+<section class="wrap shelf" aria-label="Подземелья"><div class="sh-head"><h2>Подземелья</h2><a href="/r/under/">Все 15 →</a></div><div class="sh-grid"><a class="sh-c" href="/st/v-peschere-nashli-sledy-trehletnego-rebenka-14-tysyach-let/"><span class="ph"><img src="/images/avKU-7VJOAanHgZ2.webp" alt="" loading="lazy"></span><span class="sh-t"><b>В пещере нашли следы трёхлетнего ребёнка. 14 тысяч лет назад он забрался туда вместе со взрослыми</b></span></a><a class="sh-c" href="/st/pod-gorodom-nashli-podzemnyy-labirint-vnutri-pokoilis-ostanki/"><span class="ph"><img src="/images/auopoxPph27GR1h-.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Под городом нашли подземный лабиринт. Внутри покоились останки 7000 человек</b></span></a><a class="sh-c" href="/st/pticy-padali-u-vhoda-v-pescheru-drevnie-rimlyane-schitali-ee/"><span class="ph"><img src="/images/auoo_O3-4ik6pWHY.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Птицы падали у входа в пещеру. Древние римляне считали её воротами в ад</b></span></a><a class="sh-c" href="/st/on-lezhal-v-peschere-bolshe-130-tysyach-let-za-eto-vremya-ego/"><span class="ph"><img src="/images/auMHgyuAv38Gz2Wy.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Он лежал в пещере больше 130 тысяч лет. За это время его покрыл камень</b></span></a></div></section>
+<section class="wrap shelf" aria-label="История"><div class="sh-head"><h2>История</h2><a href="/r/history/">Все 11 →</a></div><div class="sh-grid"><a class="sh-c" href="/st/na-vysote-5000-metrov-nashli-ozero-okruzhennoe-sotnyami/"><span class="ph"><img src="/images/auotxm_LXlExq-C6.webp" alt="" loading="lazy"></span><span class="sh-t"><b>На высоте 5000 метров нашли озеро, окружённое сотнями скелетов. Их ДНК удивила учёных</b></span></a><a class="sh-c" href="/st/v-srednevekove-lyudi-mylis-chasche-chem-prinyato-dumat-no-vot/"><span class="ph"><img src="/images/auQE-c4p_FDRRhrI.webp" alt="" loading="lazy"></span><span class="sh-t"><b>В Средневековье люди мылись чаще, чем принято думать. Но вот как именно</b></span></a><a class="sh-c" href="/st/chem-na-samom-dele-pahli-russkie-carevny-do-poyavleniya-duhov/"><span class="ph"><img src="/images/auQBQJmPxycDtK7D.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Чем на самом деле пахли русские царевны до появления духов</b></span></a><a class="sh-c" href="/st/zemlya-kupcov-o-kotoroy-pochti-zabyli-kak-sogdiana-soedinyala/"><span class="ph"><img src="/images/atLmbYn3yzaETY5X.webp" alt="" loading="lazy"></span><span class="sh-t"><b>Земля купцов, о которой почти забыли: как Согдиана соединяла чужие миры</b></span></a></div></section></div><!--/home-->
 <section class="wrap" aria-labelledby="h-fav" id="fav-sec" hidden>
   <div class="sec-head">
     <h2 id="h-fav">Мои находки</h2>
@@ -799,19 +834,19 @@ document.getElementById("strata").innerHTML = layers.map(L => {
 }).join("");
 
 // archive
-let cat = "all", q = "", limit = 24;
+let cat = "all", q = "", limit = 8;
 const counts = D.reduce((m,d) => (m[d.c] = (m[d.c]||0)+1, m), {});
 const order = ["all", ...Object.keys(CATS).filter(k => counts[k]).sort((a,b) => (a==="misc")-(b==="misc") || counts[b]-counts[a])];
 const chips = document.getElementById("chips");
 chips.innerHTML = order.map(k => `<button class="chip" type="button" id="c-${k}" data-c="${k}" aria-pressed="${k===cat}" style="--c:${k==="all"?"var(--lamp)":col(k)}"><span class="dot"></span>${k==="all"?"Все":CATS[k]}<sup>${k==="all"?D.length:counts[k]}</sup></button>`).join("");
-chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = b.dataset.c; limit = 24;
+chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = b.dataset.c; limit = 8;
   chips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b)); render(); });
-document.getElementById("q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); limit = 24; render(); });
-document.getElementById("more").addEventListener("click", () => { limit += 24; render(); });
+document.getElementById("q").addEventListener("input", e => { q = e.target.value.trim().toLowerCase(); limit = 8; render(); });
+document.getElementById("more").addEventListener("click", () => { limit += 12; render(); });
 function render(){
   const list = D.filter(d => (cat==="all" || d.c===cat) && (!q || d.t.toLowerCase().includes(q) || ex(d.u).toLowerCase().includes(q))).sort((a,b) => a.o - b.o);
   document.getElementById("grid").innerHTML = list.slice(0,limit).map(d =>
-    `<div class="cw"><a class="card" style="--c:${col(d.c)}" href="${url(d.u)}" target="_blank" rel="noopener"><div class="band"><img src="${img(d.u)}" alt="" loading="lazy">${svg(d.c)}</div><div class="row"><span class="tag">${CATS[d.c]}</span>${window.NEW && NEW.has(d.u) ? '<span class="newb">Новое</span>' : ""}${d.a && d.a<1e6 ? `<span class="age">${fmtAge(d.a)}</span>`:""}</div><h3>${esc(d.t)}</h3><p class="ex">${esc(ex(d.u))}</p><span class="go">Читать на Дзене →</span></a><button class="fav" type="button" data-u="${d.u}" aria-pressed="${window.isFav ? isFav(d.u) : false}" aria-label="Отложить в мои находки">${window.isFav && isFav(d.u) ? "★" : "☆"}</button></div>`).join("");
+    `<div class="cw"><a class="card" style="--c:${col(d.c)}" href="${(typeof SLUG!=="undefined"&&SLUG[d.u])?"/st/"+SLUG[d.u]+"/":url(d.u)}"><div class="band"><img src="${img(d.u)}" alt="" loading="lazy">${svg(d.c)}</div><div class="row"><span class="tag">${CATS[d.c]}</span>${window.NEW && NEW.has(d.u) ? '<span class="newb">Новое</span>' : ""}${d.a && d.a<1e6 ? `<span class="age">${fmtAge(d.a)}</span>`:""}</div><h3>${esc(d.t)}</h3><p class="ex">${esc(ex(d.u))}</p><span class="go">Читать →</span></a><button class="fav" type="button" data-u="${d.u}" aria-pressed="${window.isFav ? isFav(d.u) : false}" aria-label="Отложить в мои находки">${window.isFav && isFav(d.u) ? "★" : "☆"}</button></div>`).join("");
   document.getElementById("empty").hidden = list.length > 0;
   document.getElementById("more-wrap").hidden = list.length <= limit;
   document.getElementById("shown").textContent = list.length === D.length ? "Сначала новые." : `Найдено: ${list.length} из ${D.length}.`;
@@ -830,7 +865,7 @@ document.getElementById("f-count").textContent = D.length;
     const narrow = W < 760;
     R = narrow ? Math.min(W*0.2, 82) : 22;
     cx = W*0.5; cy = narrow ? H - R*1.9 : 46;
-    stars = Array.from({length: Math.round(W*H/2600)}, () => ({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.4+.2, p:Math.random()*6.28, s:.5+Math.random()*1.5, gold:Math.random()<.18}));
+    stars = Array.from({length: 0}, () => ({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.4+.2, p:Math.random()*6.28, s:.5+Math.random()*1.5, gold:Math.random()<.18}));
   }
   function star4(x,y,s,a){ ctx.save(); ctx.globalAlpha=a; ctx.fillStyle="#FFF4C8"; ctx.beginPath(); ctx.moveTo(x,y-s); ctx.quadraticCurveTo(x,y,x+s,y); ctx.quadraticCurveTo(x,y,x,y+s); ctx.quadraticCurveTo(x,y,x-s,y); ctx.quadraticCurveTo(x,y,x,y-s); ctx.fill(); ctx.restore(); }
   function frame(now){
@@ -843,7 +878,7 @@ document.getElementById("f-count").textContent = D.length;
     const g0 = ctx.createRadialGradient(cx,cy,R*.2,cx,cy,R*3.2); g0.addColorStop(0,"rgba(93,178,255,.28)"); g0.addColorStop(.45,"rgba(233,184,78,.08)"); g0.addColorStop(1,"rgba(6,10,21,0)");
     ctx.fillStyle = g0; ctx.beginPath(); ctx.arc(cx,cy,R*3.2,0,6.3); ctx.fill();
     // orbits with planets
-    const orbits = [[2.15,.62,-.35,.18],[2.6,.42,.5,-.12],[1.75,1.75,0,.07]];
+    const orbits = [];
     orbits.forEach(([rx,ry,rot,sp],i) => {
       ctx.save(); ctx.translate(cx,cy); ctx.rotate(rot + (reduce?0:t*sp*.15));
       ctx.strokeStyle = i===2 ? "rgba(93,178,255,.35)" : "rgba(233,184,78,.55)"; ctx.lineWidth = 1.2;
@@ -854,8 +889,8 @@ document.getElementById("f-count").textContent = D.length;
       ctx.restore();
     });
     // vertical star axis like the logo
-    ctx.strokeStyle = "rgba(233,184,78,.7)"; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(cx, cy-R*2.4); ctx.lineTo(cx, cy+R*2.4); ctx.stroke();
-    star4(cx, cy-R*2.4, R*.12, .9); star4(cx, cy+R*2.4, R*.09, .8);
+    
+    
     // blink
     if (!reduce && now > nextBlink){ blink = 1; nextBlink = now + 3200 + Math.random()*3500; }
     const open = 1 - Math.max(0, Math.sin(Math.min(blink,1)*Math.PI)); if (blink>0) blink += .09; if (blink>1) blink = 0;
