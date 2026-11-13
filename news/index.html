@@ -34,7 +34,16 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/114022016" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <style>
-.nw{padding-block:22px 6px}
+.nw{padding-block:8px 28px;min-width:0}
+.hero .hero-in .label,.hero .hero-in h1,.hero .hero-in>p,.hero .facts{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (min-width:761px){
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,min(540px,48%));gap:36px;align-items:end;min-height:min(640px,calc(100vh - 90px))}
+.hero-grid .hero-in{max-width:none;padding-block:0 30px;justify-items:center;align-self:end}
+.hero-grid .ctas{justify-content:center}
+.hero-grid .nw{align-self:center;padding-block:4px 30px}
+.hero::after{background:linear-gradient(270deg,rgba(6,10,21,.85) 0%,rgba(6,10,21,.45) 38%,rgba(6,10,21,0) 58%)!important}
+}
+@media (max-width:760px){.hero .hero-in{padding-block:8px 18px!important}}
 .nw-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:10px}
 .nw-head h2{font:400 clamp(24px,4.4vw,32px)/1.15 var(--f-display);margin:0}
 .nw-head a{color:var(--lamp);text-decoration:none;font-weight:600;font-size:15px}
