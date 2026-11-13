@@ -136,3 +136,65 @@
   function init(){ box(); pin(); } // всплывающее окно отключено по просьбе владельца
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+
+
+/* Озвучка полных текстов и переход к подборке. */
+(function () {
+  if (!/^\/st\//.test(location.pathname)) return;
+  function init() {
+    const article = document.querySelector('article.art');
+    const title = article?.querySelector('h1');
+    const full = article?.querySelector('.full');
+    if (!title) return;
+    const tools = document.createElement('div');
+    tools.style.cssText = 'display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:16px 0';
+    if (/pompe/.test(location.pathname)) {
+      const collection = document.createElement('a');
+      collection.href = '/#pompeii';
+      collection.textContent = 'Все истории о Помпеях';
+      tools.append(collection);
+    }
+    if (full && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn ghost';
+      button.textContent = 'Слушать статью';
+      const status = document.createElement('span');
+      status.setAttribute('role', 'status');
+      const paragraphs = [title, ...full.querySelectorAll('p, h2, h3, li')].map(node => node.textContent.trim()).filter(Boolean);
+      let active = false;
+      let run = 0;
+      function reset() {
+        active = false;
+        button.textContent = 'Слушать статью';
+      }
+      function read(index, currentRun) {
+        if (currentRun !== run) return;
+        if (index === paragraphs.length) { reset(); return; }
+        const line = new SpeechSynthesisUtterance(paragraphs[index]);
+        line.lang = 'ru-RU';
+        line.onend = () => read(index + 1, currentRun);
+        line.onerror = () => {
+          if (currentRun !== run) return;
+          reset();
+          status.textContent = 'Озвучка недоступна в этом браузере.';
+        };
+        speechSynthesis.speak(line);
+      }
+      button.addEventListener('click', () => {
+        run++;
+        speechSynthesis.cancel();
+        status.textContent = '';
+        if (active) { reset(); return; }
+        active = true;
+        button.textContent = 'Остановить озвучку';
+        read(0, run);
+      });
+      window.addEventListener('pagehide', () => { run++; speechSynthesis.cancel(); reset(); });
+      tools.append(button, status);
+    }
+    if (tools.childElementCount) title.after(tools);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
+})();
