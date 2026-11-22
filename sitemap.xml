@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nevsetakprosto.ru/</loc><lastmod>2026-11-13</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://nevsetakprosto.ru/</loc><lastmod>2026-11-22</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
   <url><loc>https://nevsetakprosto.ru/st/v-pompeyah-raskopali-drevnyuyu-zakusochnuyu-na-stoyke/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nevsetakprosto.ru/st/v-pompeyah-nashli-hleb-ispechennyy-pochti-2000-let-nazad-dazhe/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nevsetakprosto.ru/st/v-pompeyah-vskryli-golubuyu-komnatu-vozrastom-pochti-2000-let/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -127,7 +127,7 @@
   <url><loc>https://nevsetakprosto.ru/r/under/</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nevsetakprosto.ru/test/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://nevsetakprosto.ru/igra/</loc></url>
-<url><loc>https://nevsetakprosto.ru/news/</loc><lastmod>2026-11-12</lastmod></url>
+<url><loc>https://nevsetakprosto.ru/news/</loc><lastmod>2026-11-22</lastmod></url>
 <url><loc>https://nevsetakprosto.ru/news/larsa-most-3800-let/</loc><lastmod>2026-11-12</lastmod></url>
 <url><loc>https://nevsetakprosto.ru/news/vengriya-klad-na-pole-bitvy/</loc><lastmod>2026-11-11</lastmod></url>
 <url><loc>https://nevsetakprosto.ru/news/mongoliya-grobnica-hunnu/</loc><lastmod>2026-11-10</lastmod></url>
@@ -138,4 +138,8 @@
 <url><loc>https://nevsetakprosto.ru/news/kodovyy-zamok-1583/</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://nevsetakprosto.ru/news/pochechnyy-kamen-5300-let/</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://nevsetakprosto.ru/interaktiv/</loc></url>
+  <url><loc>https://nevsetakprosto.ru/news/merida-rimskie-rospisi.html</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/news/egipet-teranotis-zolotye-yazyki.html</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/news/kitay-homo-erectus-peshchery.html</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nevsetakprosto.ru/news/bellaghy-bolotnaya-zhenshchina.html</loc><lastmod>2026-11-22</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>
